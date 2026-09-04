@@ -48,16 +48,17 @@ export function UnlockProvider({ children }: { children: React.ReactNode }) {
     setJustUnlocked(false)
   }, [])
 
-  // $1 unlock: jump to PayPal.me when configured; otherwise demo simulation.
-  const doPay = useCallback(() => {
-    const link = paypalUnlockLink()
-    if (link) {
-      // 真实收款：打开 PayPal.me（新标签），客户完成 $1 支付
-      window.open(link, '_blank', 'noopener')
-      // 提示客户回来解锁（人工核对后解锁；见下方按钮）
+  // $1 unlock link (PayPal). When set, button renders as a real <a> so the browser
+  // opens it natively (no popup blocker / no blank tab). Falls back to demo otherwise.
+  const payLink = paypalUnlockLink()
+
+  const handlePayClick = useCallback(() => {
+    if (paypalUnlockLink()) {
+      // 真实收款：a标签已负责打开；这里仅切换提示状态
       setPayClicked(true)
       return
     }
+    // 演示模式
     setPaying(true)
     window.setTimeout(() => {
       setUnlocked(true)
@@ -129,13 +130,26 @@ export function UnlockProvider({ children }: { children: React.ReactNode }) {
               </>
             ) : (
               <>
-                <button
-                  onClick={doPay}
-                  disabled={paying}
-                  className="w-full py-3.5 bg-green-500 hover:bg-green-600 disabled:opacity-60 text-white font-bold rounded-2xl mb-2 transition-colors"
-                >
-                  {paying ? t.unlock.paying : `💳 ${t.unlock.payBtn}`}
-                </button>
+                {payLink ? (
+                  /* 真实收款：用 <a> 原生新标签打开 PayPal，避免弹窗拦截/空白页 */
+                  <a
+                    href={payLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handlePayClick}
+                    className="block w-full py-3.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-2xl mb-2 text-center transition-colors"
+                  >
+                    💳 {t.unlock.payBtn}
+                  </a>
+                ) : (
+                  <button
+                    onClick={handlePayClick}
+                    disabled={paying}
+                    className="w-full py-3.5 bg-green-500 hover:bg-green-600 disabled:opacity-60 text-white font-bold rounded-2xl mb-2 transition-colors"
+                  >
+                    {paying ? t.unlock.paying : `💳 ${t.unlock.payBtn}`}
+                  </button>
+                )}
                 <button
                   onClick={closeModal}
                   className="w-full py-2.5 text-sm text-gray-400 hover:text-gray-600"
