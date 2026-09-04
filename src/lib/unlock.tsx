@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react'
 import { useLocale } from '../i18n/LocaleContext'
-import { CONTACTS, waLink, mailtoLink } from './contacts'
+import { CONTACTS, waLink, mailtoLink, paypalUnlockLink } from './contacts'
 
 const STORAGE_KEY = 'cs_unlocked_v1'
 
@@ -27,6 +27,17 @@ export function UnlockProvider({ children }: { children: React.ReactNode }) {
   const [modalOpen, setModalOpen] = useState(false)
   const [paying, setPaying] = useState(false)
   const [justUnlocked, setJustUnlocked] = useState(false)
+  const [payClicked, setPayClicked] = useState(false)
+
+  // Manual confirm after PayPal.me redirect (real mode): grant unlock
+  const confirmPaid = useCallback(() => {
+    setUnlocked(true)
+    setJustUnlocked(true)
+    setPayClicked(false)
+    try {
+      localStorage.setItem(STORAGE_KEY, '1')
+    } catch { /* ignore */ }
+  }, [])
 
   const requestUnlock = useCallback(() => {
     setModalOpen(true)
@@ -37,8 +48,16 @@ export function UnlockProvider({ children }: { children: React.ReactNode }) {
     setJustUnlocked(false)
   }, [])
 
-  // Demo payment: simulate gateway. In production replace with PayPal/万里汇 redirect + webhook.
+  // $1 unlock: jump to PayPal.me when configured; otherwise demo simulation.
   const doPay = useCallback(() => {
+    const link = paypalUnlockLink()
+    if (link) {
+      // 真实收款：打开 PayPal.me（新标签），客户完成 $1 支付
+      window.open(link, '_blank', 'noopener')
+      // 提示客户回来解锁（人工核对后解锁；见下方按钮）
+      setPayClicked(true)
+      return
+    }
     setPaying(true)
     window.setTimeout(() => {
       setUnlocked(true)
@@ -88,6 +107,26 @@ export function UnlockProvider({ children }: { children: React.ReactNode }) {
                 </ul>
                 <p className="text-xs text-gray-500 mt-2">{t.unlock.successNote}</p>
               </div>
+            ) : payClicked ? (
+              /* PayPal.me 已打开：等客户完成支付后确认解锁 */
+              <>
+                <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-3 text-start">
+                  <p className="text-blue-800 font-semibold mb-1 text-sm">💳 {t.unlock.payOpenTitle}</p>
+                  <p className="text-xs text-gray-600 leading-relaxed">{t.unlock.payOpenHint}</p>
+                </div>
+                <button
+                  onClick={confirmPaid}
+                  className="w-full py-3.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-2xl mb-2 transition-colors"
+                >
+                  ✅ {t.unlock.payDoneBtn}
+                </button>
+                <button
+                  onClick={() => { setPayClicked(false); closeModal() }}
+                  className="w-full py-2.5 text-sm text-gray-400 hover:text-gray-600"
+                >
+                  {t.unlock.later}
+                </button>
+              </>
             ) : (
               <>
                 <button
