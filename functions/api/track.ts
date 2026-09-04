@@ -80,7 +80,7 @@ async function track17(env: Record<string, string>, no: string) {
           ? loc
           : e.location_raw || ''
     return {
-      time: e.time_iso || e.time || e.datetime || '',
+      time: fmt17Time(e.time_iso || e.time || e.datetime || ''),
       location: place,
       code: map17Event(String(e.status_code ?? e.status ?? '')),
       description: e.description || e.text || '',
@@ -163,6 +163,14 @@ async function trackingMore(env: Record<string, string>, no: string) {
 }
 
 /* ---------- normalizers ---------- */
+// 17TRACK ISO(UTC) → 客户本地友好时间
+function fmt17Time(t: string): string {
+  if (!t) return ''
+  const d = new Date(t)
+  if (isNaN(d.getTime())) return t.replace('T', ' ').slice(0, 16)
+  const p = (n: number) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`
+}
 // 17TRACK event-level status → semantic code for the timeline UI
 function map17Event(code: string): string {
   const s = String(code)
