@@ -22,6 +22,7 @@ export const zh: Dict = {
     hint: '支持菜鸟、云途、燕文等100+国际线路，以及顺丰、中通等国内快递（国内段）。',
     demoNote: '演示模式 — 接入 17TRACK / 快递100 API Key 后即可实时追踪。',
     noResult: '未查询到物流信息，请核对运单号后重试。',
+    noResultHint: '物流商可能需要数小时更新——请稍后重试。',
     noInput: '请输入运单号。',
     badge: {
       delivered: '已签收',

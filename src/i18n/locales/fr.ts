@@ -22,6 +22,7 @@ export const fr: Dict = {
     hint: 'Nous suivons Cainiao, YunExpress, Yanwen et plus de 100 lignes, ainsi que SF, ZTO et d’autres coursiers chinois pour le segment national.',
     demoNote: 'Aperçu de démonstration — connectez votre clé API 17TRACK/Kuaidi100 pour le suivi en direct.',
     noResult: 'Aucun suivi trouvé. Vérifiez le numéro et réessayez.',
+    noResultHint: 'Les transporteurs peuvent mettre quelques heures à mettre à jour — réessayez plus tard.',
     noInput: 'Veuillez saisir un numéro de suivi.',
     badge: {
       delivered: 'Livré',

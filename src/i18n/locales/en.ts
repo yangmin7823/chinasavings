@@ -21,6 +21,7 @@ export const en = {
     hint: 'We track Cainiao, YunExpress, Yanwen and 100+ lines — plus SF, ZTO & other Chinese couriers for the domestic leg.',
     demoNote: 'Demo preview — connect your 17TRACK / Kuaidi100 API key to enable live tracking.',
     noResult: 'No tracking found. Please check the number and try again.',
+    noResultHint: 'Carriers may take a few hours to update — please try again later.',
     noInput: 'Please enter a tracking number.',
     badge: {
       delivered: 'Delivered',

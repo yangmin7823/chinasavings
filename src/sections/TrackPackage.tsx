@@ -176,6 +176,13 @@ export default function TrackPackage() {
                 <span className="w-1.5 h-5 bg-blue-500 rounded-full inline-block" />
                 {t.track.timelineTitle}
               </h4>
+              {result.events.length === 0 ? (
+                <div className="bg-gray-50 border border-dashed border-gray-200 rounded-xl px-5 py-6 text-center">
+                  <div className="text-2xl mb-1.5">📭</div>
+                  <p className="text-sm text-gray-600 font-medium">{t.track.noResult}</p>
+                  <p className="text-xs text-gray-400 mt-1">{t.track.noResultHint}</p>
+                </div>
+              ) : (
               <ol className="relative border-s-2 border-gray-100 ms-3 space-y-6">
                 {[...result.events].reverse().map((ev, i) => {
                   const isLast = i === 0 // after reverse, first shown = most recent
@@ -190,14 +197,15 @@ export default function TrackPackage() {
                         <p className={`text-sm font-semibold ${isLast ? 'text-gray-900' : 'text-gray-600'}`}>
                           {EVENT_LABEL[ev.code] ?? ev.code}
                         </p>
-                        <p className="text-xs text-gray-400" dir="ltr">{ev.time}</p>
-                      </div>
-                      <p className="text-xs text-gray-500 mt-0.5">📍 {ev.location}</p>
-                      <p className="text-xs text-gray-400 mt-1 leading-relaxed">{ev.description}</p>
-                    </li>
-                  )
-                })}
+                      <p className="text-xs text-gray-400" dir="ltr">{ev.time}</p>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-0.5">📍 {ev.location}</p>
+                    <p className="text-xs text-gray-400 mt-1 leading-relaxed">{ev.description}</p>
+                  </li>
+                )
+              })}
               </ol>
+              )}
             </div>
 
             {/* Footer help */}

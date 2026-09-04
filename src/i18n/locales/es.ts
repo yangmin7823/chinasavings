@@ -22,6 +22,7 @@ export const es: Dict = {
     hint: 'Rastreamos Cainiao, YunExpress, Yanwen y más de 100 líneas, además de SF, ZTO y otros mensajeros chinos para el tramo nacional.',
     demoNote: 'Vista previa de demostración: conecta tu clave de API 17TRACK/Kuaidi100 para el seguimiento en vivo.',
     noResult: 'No se encontró seguimiento. Comprueba el número e inténtalo de nuevo.',
+    noResultHint: 'Los transportistas pueden tardar unas horas en actualizar; inténtalo de nuevo más tarde.',
     noInput: 'Introduce un número de seguimiento.',
     badge: {
       delivered: 'Entregado',
