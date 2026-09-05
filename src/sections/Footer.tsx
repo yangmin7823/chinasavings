@@ -34,7 +34,7 @@ export default function Footer() {
             <a href="#home" onClick={(e) => { e.preventDefault(); scrollTo('#home') }} className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
               <span className="text-2xl">🇨🇳</span>
               <span className="text-xl font-bold text-white">
-                China<span className="text-red-400">Savings</span>
+                Buy<span className="text-red-400">TCN</span>
               </span>
             </a>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">{t.footer.about}</p>

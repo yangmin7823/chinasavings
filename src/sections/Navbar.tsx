@@ -43,7 +43,7 @@ export default function Navbar() {
           >
             <span className="text-2xl">🇨🇳</span>
             <span className="text-xl font-bold text-gray-900 whitespace-nowrap">
-              China<span className="text-red-600">Savings</span>
+              Buy<span className="text-red-600">TCN</span>
             </span>
           </a>
 
