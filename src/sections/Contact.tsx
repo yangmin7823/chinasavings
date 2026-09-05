@@ -75,7 +75,7 @@ export default function Contact() {
                     className="w-full flex items-center gap-4 p-4 bg-green-50 rounded-xl border border-green-100 hover:bg-green-100 transition-colors group text-start"
                   >
                     <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 border-2 border-white shadow-sm group-hover:scale-105 transition-transform">
-                      <img src="./wechat-qr-v2.jpg" alt={t.contact.wxTitle} className="w-full h-full object-cover" />
+                      <img src="/wechat-qr-v2.jpg" alt={t.contact.wxTitle} className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-gray-900">{t.contact.wxTitle}</p>
@@ -92,7 +92,7 @@ export default function Contact() {
                       <div className="text-2xl mb-2">💚</div>
                       <p className="font-bold text-gray-900 text-lg mb-1">{t.contact.wxTitle}</p>
                       <p className="text-sm text-gray-500 mb-4">{t.contact.wxScan}</p>
-                      <img src="./wechat-qr-v2.jpg" alt={t.contact.wxTitle} className="w-full rounded-2xl border border-gray-100 mb-4" />
+                      <img src="/wechat-qr-v2.jpg" alt={t.contact.wxTitle} className="w-full rounded-2xl border border-gray-100 mb-4" />
                       <p className="text-sm text-gray-600 mb-4">{CONTACTS.wechat}</p>
                       <button onClick={() => setQrOpen(false)} className="px-6 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-gray-700 transition-colors" aria-label="Close">
                         ✕

@@ -23,21 +23,37 @@ function readStored(key: string, fallback: string): string {
   }
 }
 
+// Language is driven by the URL path:  /  = en (canonical root),
+// /zh /es /fr /ar = the other languages. No path always means en.
+export function langFromPath(pathname: string): LangCode {
+  const m = /^\/([a-z]{2})\/?/.exec(pathname)
+  if (m && LANGUAGES.some((l) => l.code === m[1])) return m[1] as LangCode
+  return 'en'
+}
+
+// Build the URL (keeping any #hash) for switching language.
+export function langPath(l: LangCode, current: string): string {
+  const hash = current.includes('#') ? current.slice(current.indexOf('#')) : ''
+  return l === 'en' ? '/' + hash : `/${l}/${hash}`
+}
+
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<LangCode>(() => {
-    const saved = readStored('cs_lang', '')
-    return (LANGUAGES.some((l) => l.code === saved) ? saved : 'en') as LangCode
-  })
+  const [lang, setLangState] = useState<LangCode>(() => langFromPath(window.location.pathname))
   const [currency, setCurrencyState] = useState<CurrencyCode>(() => {
     const saved = readStored('cs_currency', '')
     if (CURRENCIES.some((c) => c.code === saved)) return saved as CurrencyCode
-    return defaultCurrencyForLang(lang)
+    return defaultCurrencyForLang(langFromPath(window.location.pathname))
   })
 
   const setLang = useCallback((l: LangCode) => {
     setLangState(l)
     try {
       localStorage.setItem('cs_lang', l)
+      // Keep the URL in sync so each language has its own address (SEO).
+      const target = langPath(l, window.location.pathname + window.location.search + window.location.hash)
+      if (target !== window.location.pathname + window.location.search + window.location.hash) {
+        window.history.pushState(null, '', target)
+      }
     } catch { /* ignore */ }
   }, [])
 
