@@ -2,7 +2,7 @@
 export const en = {
   dir: 'ltr',
   company: 'Bshine Ltd',
-  metaTitle: 'ChinaSavings — Taobao Agent & Buy from China | Save Up to 70%',
+  metaTitle: 'BuyTCN — Taobao Agent & Buy from China | Save Up to 70%',
   metaDesc: 'Taobao agent & China shopping agent: buy from 1688, Taobao, JD & Weidian at Chinese local prices. Free QC photos, package consolidation, parcel forwarding from China to USA, UK, EU, Canada & worldwide. Fees from 5%.',
   nav: {
     home: 'Home', savings: 'Savings', how: 'How It Works', services: 'Services',
@@ -56,7 +56,7 @@ export const en = {
     sendBtn: 'Send via WhatsApp',
     sendBtnSub: 'Opens WhatsApp with your link ready to send',
     emailAlt: 'Prefer email? Send to',
-    whatsappIntro: 'Hi ChinaSavings! I found this item and would like a quote:',
+    whatsappIntro: 'Hi BuyTCN! I found this item and would like a quote:',
     successNote: 'WhatsApp opened — just press send and we\'ll get back to you within 24h.',
     howTitle: 'How submitting works',
     howItems: [

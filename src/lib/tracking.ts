@@ -145,7 +145,7 @@ function buildDemo(trackingNo: string, carrier: Carrier): TrackResult {
     events = [
       ev(0, 'Yiwu, CN', 'picked_up', `Seller shipped via ${carrier.name}`),
       ev(1, 'Hangzhou, CN', 'in_transit', 'Arrived at regional sorting center'),
-      ev(2, 'Changsha, CN', 'in_transit', 'In transit to ChinaSavings warehouse'),
+      ev(2, 'Changsha, CN', 'in_transit', 'In transit to BuyTCN warehouse'),
       ev(3, 'Changsha, CN', 'delivered', 'Delivered to warehouse — QC scheduled'),
     ]
     if (stage >= 4) status = 'delivered'

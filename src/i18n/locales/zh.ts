@@ -3,7 +3,7 @@ import type { Dict } from './en'
 export const zh: Dict = {
   dir: 'ltr',
   company: 'Bshine Ltd',
-  metaTitle: 'ChinaSavings — 从中国海淘，最高节省70%',
+  metaTitle: 'BuyTCN — 从中国海淘，最高节省70%',
   metaDesc: '像本地人一样逛淘宝、1688、拼多多和天猫。免费验货拍照、90天免费仓储、阶梯服务费低至5%。商品代购、机票、酒店等一应俱全。',
   nav: {
     home: '首页', savings: '省钱对比', how: '服务流程', services: '服务项目',
@@ -57,7 +57,7 @@ export const zh: Dict = {
     sendBtn: '通过 WhatsApp 发送',
     sendBtnSub: '打开 WhatsApp，链接已准备好发送',
     emailAlt: '更习惯邮件？发送至',
-    whatsappIntro: '你好 ChinaSavings！我看中了这件商品，想要报价：',
+    whatsappIntro: '你好 BuyTCN！我看中了这件商品，想要报价：',
     successNote: 'WhatsApp 已打开——点击发送即可，我们会在24小时内回复您。',
     howTitle: '提交后会发生什么',
     howItems: [

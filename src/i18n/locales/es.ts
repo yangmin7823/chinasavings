@@ -3,7 +3,7 @@ import type { Dict } from './en'
 export const es: Dict = {
   dir: 'ltr',
   company: 'Bshine Ltd',
-  metaTitle: 'ChinaSavings — Compra en China, ahorra hasta un 70%',
+  metaTitle: 'BuyTCN — Compra en China, ahorra hasta un 70%',
   metaDesc: 'Compra en Taobao, 1688, Pinduoduo y Tmall como un local. Fotos QC gratuitas, 90 días de almacenaje gratis, comisiones por tramos desde el 5%. Productos, vuelos, hoteles y más.',
   nav: {
     home: 'Inicio', savings: 'Ahorros', how: 'Cómo funciona', services: 'Servicios',
@@ -57,7 +57,7 @@ export const es: Dict = {
     sendBtn: 'Enviar por WhatsApp',
     sendBtnSub: 'Abre WhatsApp con tu enlace listo para enviar',
     emailAlt: '¿Prefieres email? Envía a',
-    whatsappIntro: '¡Hola ChinaSavings! Encontré este artículo y me gustaría un presupuesto:',
+    whatsappIntro: '¡Hola BuyTCN! Encontré este artículo y me gustaría un presupuesto:',
     successNote: 'WhatsApp abierto: solo pulsa enviar y te responderemos en 24 h.',
     howTitle: 'Cómo funciona el envío',
     howItems: [

@@ -3,7 +3,7 @@ import type { Dict } from './en'
 export const ar: Dict = {
   dir: 'rtl',
   company: 'Bshine Ltd',
-  metaTitle: 'ChinaSavings — اشترِ من الصين ووفّر حتى 70%',
+  metaTitle: 'BuyTCN — اشترِ من الصين ووفّر حتى 70%',
   metaDesc: 'تسوّق من تاوباو و1688 وبيندودو وتي مول كالمحليين. صور فحص مجانية، تخزين مجاني 90 يوماً، رسوم خدمة متدرجة تبدأ من 5%. منتجات ورحلات جوية وفنادق والمزيد.',
   nav: {
     home: 'الرئيسية', savings: 'التوفير', how: 'كيف نعمل', services: 'الخدمات',
@@ -57,7 +57,7 @@ export const ar: Dict = {
     sendBtn: 'أرسل عبر واتساب',
     sendBtnSub: 'يفتح واتساب مع رابطك جاهزاً للإرسال',
     emailAlt: 'تفضل البريد الإلكتروني؟ أرسل إلى',
-    whatsappIntro: 'مرحباً ChinaSavings! وجدت هذا المنتج وأود عرض سعر:',
+    whatsappIntro: 'مرحباً BuyTCN! وجدت هذا المنتج وأود عرض سعر:',
     successNote: 'تم فتح واتساب — اضغط إرسال وسنرد خلال 24 ساعة.',
     howTitle: 'كيف يعمل الإرسال',
     howItems: [

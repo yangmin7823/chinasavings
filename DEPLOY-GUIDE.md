@@ -1,4 +1,4 @@
-# ChinaSavings 独立站 — 部署上线指南
+# BuyTCN 独立站 — 部署上线指南
 
 > 目标托管：**Cloudflare Pages**（免费 · 无限带宽 · 全球 330+ 节点）
 > 目标市场：美国 / 英国 / 欧洲 / 中东高收入地区
@@ -22,7 +22,7 @@ npm run build      # 产物输出到 dist/
 ```bash
 git init
 git add .
-git commit -m "ChinaSavings v1.0"
+git commit -m "BuyTCN v1.0"
 git branch -M main
 git remote add origin https://github.com/<你的用户名>/chinasavings.git
 git push -u origin main
