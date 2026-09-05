@@ -28,16 +28,25 @@ export function UnlockProvider({ children }: { children: React.ReactNode }) {
   const [paying, setPaying] = useState(false)
   const [justUnlocked, setJustUnlocked] = useState(false)
   const [payClicked, setPayClicked] = useState(false)
+  const [receipt, setReceipt] = useState('')
+  const [receiptError, setReceiptError] = useState(false)
 
-  // Manual confirm after PayPal.me redirect (real mode): grant unlock
+  // Manual confirm after PayPal redirect (real mode): customer must supply
+  // their PayPal transaction ID or payment email so we can reconcile in the
+  // PayPal dashboard. Grant unlock only after a non-empty value.
   const confirmPaid = useCallback(() => {
+    if (!receipt.trim()) {
+      setReceiptError(true)
+      return
+    }
+    setReceiptError(false)
     setUnlocked(true)
     setJustUnlocked(true)
     setPayClicked(false)
     try {
       localStorage.setItem(STORAGE_KEY, '1')
     } catch { /* ignore */ }
-  }, [])
+  }, [receipt])
 
   const requestUnlock = useCallback(() => {
     setModalOpen(true)
@@ -106,14 +115,52 @@ export function UnlockProvider({ children }: { children: React.ReactNode }) {
                   <li>📞 {t.unlock.phoneLabel}: <b>{CONTACTS.phoneCNDisplay}</b></li>
                   <li>✉️ {t.contact.emailTitle}: <b>{CONTACTS.email}</b></li>
                 </ul>
+                {receipt.trim() && (
+                  <div className="mt-3 bg-white border border-green-200 rounded-xl p-3">
+                    <p className="text-xs text-gray-500 mb-2">
+                      🧾 {t.unlock.receiptField}: <b className="text-gray-800 break-all">{receipt.trim()}</b>
+                    </p>
+                    <p className="text-xs text-gray-500 mb-2">{t.unlock.proofHint}</p>
+                    <div className="flex gap-2">
+                      <a
+                        href={waLink(`${t.unlock.proofMsg}\n${t.unlock.receiptField}: ${receipt.trim()}`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center py-2 bg-green-500 hover:bg-green-600 text-white text-xs font-bold rounded-xl transition-colors"
+                      >
+                        💬 {t.unlock.proofWa}
+                      </a>
+                      <a
+                        href={mailtoLink(t.unlock.proofMailSub, `${t.unlock.proofMsg}\n${t.unlock.receiptField}: ${receipt.trim()}`)}
+                        className="flex-1 text-center py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold rounded-xl transition-colors"
+                      >
+                        ✉️ {t.unlock.proofMail}
+                      </a>
+                    </div>
+                  </div>
+                )}
                 <p className="text-xs text-gray-500 mt-2">{t.unlock.successNote}</p>
               </div>
             ) : payClicked ? (
-              /* PayPal.me 已打开：等客户完成支付后确认解锁 */
+              /* PayPal 已打开：要求填写交易号/付款邮箱后才能解锁 */
               <>
                 <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-3 text-start">
                   <p className="text-blue-800 font-semibold mb-1 text-sm">💳 {t.unlock.payOpenTitle}</p>
                   <p className="text-xs text-gray-600 leading-relaxed">{t.unlock.payOpenHint}</p>
+                </div>
+                <div className="text-start mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">{t.unlock.receiptField}</label>
+                  <input
+                    type="text"
+                    value={receipt}
+                    onChange={(e) => { setReceipt(e.target.value); if (e.target.value.trim()) setReceiptError(false) }}
+                    placeholder={t.unlock.receiptPh}
+                    className={`w-full px-3 py-2.5 border rounded-xl text-sm text-gray-800 outline-none transition-colors ${receiptError ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-green-400'}`}
+                  />
+                  {receiptError && (
+                    <p className="text-xs text-red-500 mt-1">⚠️ {t.unlock.receiptReq}</p>
+                  )}
+                  <p className="text-[11px] text-gray-400 mt-1.5 leading-relaxed">{t.unlock.receiptHelp}</p>
                 </div>
                 <button
                   onClick={confirmPaid}
