@@ -48,6 +48,11 @@ function canonicalFor(l) {
 }
 
 function postProcess(html, lang) {
+  // Remove any external gtm.js script that headless Edge itself injected while
+  // executing the inline GTM loader during dump. Keeping it would double-load
+  // GTM in real browsers (static tag + loader-injected tag). The inline loader
+  // stays and injects GTM exactly once at runtime.
+  html = html.replace(/<script[^>]*src="[^"]*googletagmanager\.com[^"]*"[^>]*>\s*<\/script>/g, '')
   html = html.replace(/<html([^>]*)\blang="[^"]*"/, `<html$1lang="${lang}"`)
   html = html.replace(/(src|href)="\.\//g, '$1="/')
   html = html.replace(/<link rel="canonical" href="[^"]*" ?\/?>/, `<link rel="canonical" href="${canonicalFor(lang)}" />`)
