@@ -21,3 +21,6 @@ Thumbs.db
 .idea
 .vscode/*
 !.vscode/extensions.json
+
+# local cloudflare deploy token (never commit)
+.cloudflare-token
