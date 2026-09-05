@@ -40,12 +40,12 @@ async function main() {
     const { stdout } = await run(
       process.execPath,
       [join(root, 'node_modules', 'wrangler', 'bin', 'wrangler.js'), 'whoami'],
-      { env, timeout: 60000 },
+      { env, timeout: 30000 },
     )
     console.log('wrangler auth: OK (' + stdout.trim().split('\n')[0].slice(0, 80) + ')')
   } catch (e) {
-    console.error('wrangler auth failed:', e.message)
-    process.exit(1)
+    // whoami is just a pre-flight nicety; the deploy below uses the same token.
+    console.warn('wrangler whoami failed (non-fatal): ' + (e.message || e).toString().slice(0, 120))
   }
 
   const dist = join(root, 'dist')
