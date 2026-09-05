@@ -10,8 +10,8 @@ export const CONTACTS = {
   whatsappDisplay: '+86 153 8759 2595',
   // 微信 ID
   wechat: 'bshine01',
-  // 邮箱
-  email: 'yangmin7823@gmail.com',
+  // 邮箱（对外统一用域名邮箱 service@buytcn.com，经 Cloudflare Email Routing 转发至 yangmin7823@gmail.com）
+  email: 'service@buytcn.com',
   // PayPal 收款 —— ★ $1 支付
   // 方式A：Hosted Buttons 内嵌按钮（推荐，页面内直接支付）：
   paypalClientId: 'BAA-QTpqyxkgHeTVWDEcVOYwtpCMNjH5gvH1D02OQ90qjmThu1obDPKnSGJMN4yYafmCBtgTvO5KkT15MA',

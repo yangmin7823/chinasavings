@@ -129,6 +129,12 @@ export default function Contact() {
               <p className="text-sm font-semibold text-gray-900 mb-1">{t.contact.companyName}</p>
               <p className="text-sm text-gray-500">{t.contact.companyAddr}</p>
               <p className="text-sm text-gray-500">{t.contact.companyNote}</p>
+              <a
+                href={mailtoLink('', '')}
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+              >
+                📧 {t.contact.supportLabel} · {CONTACTS.email}
+              </a>
             </div>
           </div>
 

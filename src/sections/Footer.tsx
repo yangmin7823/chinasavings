@@ -74,6 +74,12 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">{t.footer.contactTitle}</h4>
             {!unlocked ? (
               <div>
+                <a
+                  href={mailtoLink('', '')}
+                  className="inline-flex items-center gap-1.5 text-gray-400 hover:text-blue-400 text-sm transition-colors mb-3"
+                >
+                  📧 {CONTACTS.email}
+                </a>
                 <button
                   onClick={requestUnlock}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white text-sm rounded-lg transition-colors"
