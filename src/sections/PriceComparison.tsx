@@ -25,6 +25,15 @@ export default function PriceComparison() {
           <p className="text-xl text-gray-500 max-w-2xl mx-auto">{t.prices.sub}</p>
         </div>
 
+        {/* Authenticity banner — addresses replica concerns up front */}
+        <div className="max-w-4xl mx-auto mb-10 flex items-start gap-3 bg-green-50 border border-green-200 rounded-2xl px-5 py-4">
+          <span className="text-2xl flex-shrink-0">✅</span>
+          <div>
+            <p className="font-bold text-green-800 text-sm mb-0.5">{t.prices.authenticTitle}</p>
+            <p className="text-green-700 text-xs leading-relaxed">{t.prices.authenticText}</p>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {PRODUCTS.map((p) => {
             const name = t.prices.pnames[p.key as keyof typeof t.prices.pnames]

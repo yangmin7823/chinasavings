@@ -101,6 +101,8 @@ export const fr: Dict = {
     headingA: 'Mêmes produits,', headingB: 'moitié prix.',
     sub: 'Pourquoi payer plus ? Obtenez exactement les mêmes produits aux prix locaux chinois, avec QC gratuit et expédition à domicile.',
     usLabel: 'Prix US', saveLabel: 'Économie',
+    authenticTitle: 'Authentique à 100 % — nous ne traitons jamais les répliques',
+    authenticText: 'Nous ne sourçons que des produits authentiques et neufs auprès des circuits officiels de vente au détail et de gros en Chine. Les économies viennent des prix locaux chinois, pas de contrefaçons. Chaque article est photographié au contrôle qualité et approuvé par vous avant expédition.',
     footnote: '* Estimations : prix de gros chinois + frais de service dégressifs + expédition. Demandez un devis pour un prix exact.',
     pnames: {
       iphone: 'iPhone 16 Pro Max 256 Go', nike: 'Nike Air Force 1', lv: 'Louis Vuitton Neverfull MM',
@@ -169,7 +171,7 @@ export const fr: Dict = {
       { band: '2 000 $ – 5 000 $', rate: '8 %' },
       { band: '5 000 $+', rate: '5 % – 8 %' },
     ], feats: ['Approvisionnement inclus', 'Inspection qualité gratuite', 'Consolidation gratuite', 'Gestion complète de la commande'] },
-    shipping: { name: 'Expédition', priceLabel: 'Au prix coûtant', desc: 'Vous payez exactement ce que facture le transporteur, sans marge.', feats: ['Fret aérien : 7–10 jours', 'Fret maritime : 15–25 jours', 'Express : 5–7 jours', 'Numéro de suivi réel', 'Assurance disponible'] },
+    shipping: { name: 'Expédition', priceLabel: 'Au prix coûtant', desc: 'Vous payez exactement ce que facture le transporteur, sans marge sur le fret. Nos revenus viennent des frais de service, jamais de majorations cachées sur l’expédition.', feats: ['Fret aérien : 7–10 jours', 'Fret maritime : 15–25 jours', 'Express : 5–7 jours', 'Numéro de suivi réel', 'Assurance disponible'] },
     exampleTitle: 'Exemple concret : ce que vous paieriez',
     exCols: ['Article', 'Prix US', 'Coût article', 'Frais de service', 'Expédition', 'Votre total', 'Vous économisez'],
     ratesTitle: 'Tarifs d’expédition transparents',
@@ -184,6 +186,8 @@ export const fr: Dict = {
     heading: 'Questions fréquentes',
     sub: 'Tout ce que vous devez savoir avant de commencer.',
     items: [
+      { q: 'Ces produits sont-ils authentiques ? Vendez-vous des répliques ?', a: 'Non — authentique à 100 % uniquement. Les répliques et contrefaçons sont une ligne rouge absolue. Nous achetons des produits authentiques et neufs auprès des circuits officiels chinois de détail et de gros (boutiques officielles Taobao, Tmall, fournisseurs vérifiés 1688, revendeurs agréés). Vous gardez le contrôle : le produit réel est photographié au contrôle qualité et vous l’approuvez avant l’envoi. Si un vendeur expédiait autre chose que votre commande, nous vous aidons à régler avant la sortie de Chine.' },
+      { q: 'Pourquoi vos prix sont-ils si bas ? Comment gagnez-vous de l’argent ?', a: 'Excellente question, et nous voulons être transparents. Les économies viennent des prix locaux et de gros chinois : pour le même produit authentique, ils sont souvent 30 à 70 % inférieurs au prix de détail américain, du fait du marché intérieur et du taux de change. Nous gagnons des frais de service dégressifs et clairs (5–15 %, voir Tarifs), sans profit caché dans l’expédition, le taux de change ni des frais fictifs. L’expédition est facturée au prix coûtant avec le reçu réel du transporteur. Rien n’est majoré en secret, et chaque paiement est protégé par PayPal.' },
       { q: 'Pourquoi des frais de 1 $ pour débloquer le contact ?', a: 'Le 1 $ unique débloque votre agent personnel et notre contact direct (WhatsApp / WeChat / Email / téléphone). Cela garde notre canal libre de spam et d’appels à froid pour les vrais clients. Le 1 $ est intégralement déduit des frais de service de votre première commande : ce n’est donc pas vraiment un coût.' },
       { q: 'Que puis-je acheter avec votre service ?', a: 'Presque tout ce qui est fabriqué en Chine : mode, électronique, maison, beauté, jouets, fabrication sur mesure. Nous réservons aussi vols, hôtels, forfaits voyage et produits numériques. Si cela existe en Chine, nous l’obtenons.' },
       { q: 'Combien de temps prend l’expédition ?', a: 'Fret aérien 7–10 jours, express 5–7 jours, maritime 15–25 jours. Nous recommandons la meilleure option selon votre budget et vos délais.' },

@@ -100,6 +100,8 @@ export const en = {
     headingA: 'Same Products.', headingB: 'Half the Price.',
     sub: 'Why pay more? Get the exact same products at Chinese local prices, with free QC and shipping to your door.',
     usLabel: 'US Retail', saveLabel: 'Save',
+    authenticTitle: '100% authentic — we never deal in replicas',
+    authenticText: 'We only source genuine, brand-new products from official Chinese retail & wholesale channels. The savings come from Chinese local pricing, not from counterfeits. Every item is QC-photographed and approved by you before it ships.',
     footnote: '* Estimates: Chinese wholesale price + tiered service fee + shipping. Request a quote for exact pricing.',
     pnames: {
       iphone: 'iPhone 16 Pro Max 256GB', nike: 'Nike Air Force 1', lv: 'Louis Vuitton Neverfull MM',
@@ -168,7 +170,7 @@ export const en = {
       { band: '$2,000 – $5,000', rate: '8%' },
       { band: '$5,000+', rate: '5% – 8%' },
     ], feats: ['Sourcing & purchasing included', 'Free quality inspection', 'Free package consolidation', 'Full order management'] },
-    shipping: { name: 'Shipping', priceLabel: 'At Cost', desc: 'You pay exactly what the carrier charges — no markup.', feats: ['Air freight: 7–10 days', 'Sea freight: 15–25 days', 'Express: 5–7 days', 'Real tracking number', 'Insurance available'] },
+    shipping: { name: 'Shipping', priceLabel: 'At Cost', desc: 'You pay exactly what the carrier charges — no markup on freight. Our revenue comes from the service fee, never from hidden shipping markups.', feats: ['Air freight: 7–10 days', 'Sea freight: 15–25 days', 'Express: 5–7 days', 'Real tracking number', 'Insurance available'] },
     exampleTitle: "Real Example: What You'd Pay",
     exCols: ['Item', 'US Retail', 'Item Cost', 'Service Fee', 'Shipping', 'Your Total', 'You Save'],
     ratesTitle: 'Transparent Shipping Rates',
@@ -183,6 +185,8 @@ export const en = {
     heading: 'Frequently Asked Questions',
     sub: 'Everything you need to know before getting started.',
     items: [
+      { q: 'Are these products genuine? Do you deal in replicas?', a: 'No — 100% authentic only. Replicas and counterfeits are an absolute hard line for us. We buy genuine, brand-new products from official Chinese retail and wholesale channels (Taobao flagship stores, Tmall, 1688 verified suppliers, authorized dealers). You keep full control: the real product is QC-photographed and you approve it before we ship. If a seller ever ships something that is not what you ordered, we help you resolve it before it leaves China.' },
+      { q: 'Why are your prices so much lower? How do you make money?', a: 'Great question — we want it transparent. The savings come from Chinese local and wholesale prices, which for the same genuine product are often 30–70% below US retail; the currency and domestic China market simply price things differently. We earn a clear tiered service fee (5–15%, see Pricing) — we do not hide profit in shipping, currency spread or fake fees. Shipping is charged at cost with the carrier’s actual receipt. Nothing is marked up in secret, and every payment is protected by PayPal.' },
       { q: 'Why a $1 fee to unlock contact?', a: 'The one-time $1 unlocks your personal agent and our direct contact (WhatsApp / WeChat / Email / phone). It keeps our inbox free for real customers — no spam, no cold calls. The $1 is fully credited against your first order’s service fee, so it isn’t really a cost.' },
       { q: 'What can I buy through your service?', a: 'Almost anything made in China: fashion, electronics, home goods, beauty, toys, custom manufacturing. We also book flights, hotels, travel packages and digital products. If it exists in China, we can get it.' },
       { q: 'How long does shipping take?', a: 'Air freight 7–10 days, express 5–7 days, sea freight 15–25 days. We recommend the best option for your budget and deadline.' },

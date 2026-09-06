@@ -101,6 +101,8 @@ export const es: Dict = {
     headingA: 'Los mismos productos,', headingB: 'a mitad de precio.',
     sub: '¿Por qué pagar más? Consigue los mismos productos a precios locales chinos, con QC gratuito y envío a tu puerta.',
     usLabel: 'Precio EE. UU.', saveLabel: 'Ahorro',
+    authenticTitle: '100 % auténtico — nunca tratamos con réplicas',
+    authenticText: 'Solo obtenemos productos genuinos y nuevos de canales minoristas y mayoristas oficiales chinos. El ahorro viene del precio local chino, no de falsificaciones. Cada artículo se fotografía en el control de calidad y tú lo apruebas antes de enviarlo.',
     footnote: '* Estimaciones: precio mayorista chino + comisión por tramos + envío. Solicita un presupuesto para el precio exacto.',
     pnames: {
       iphone: 'iPhone 16 Pro Max 256GB', nike: 'Nike Air Force 1', lv: 'Louis Vuitton Neverfull MM',
@@ -169,7 +171,7 @@ export const es: Dict = {
       { band: '$2,000 – $5,000', rate: '8%' },
       { band: '$5,000+', rate: '5% – 8%' },
     ], feats: ['Compra y adquisición incluidas', 'Inspección de calidad gratis', 'Consolidación de paquetes gratis', 'Gestión completa del pedido'] },
-    shipping: { name: 'Envío', priceLabel: 'A precio de coste', desc: 'Pagas exactamente lo que cobra el transportista, sin margen.', feats: ['Carga aérea: 7–10 días', 'Carga marítima: 15–25 días', 'Express: 5–7 días', 'Número de seguimiento real', 'Seguro disponible'] },
+    shipping: { name: 'Envío', priceLabel: 'A precio de coste', desc: 'Pagas exactamente lo que cobra el transportista, sin margen en el flete. Nuestros ingresos vienen de la comisión, nunca de márgenes ocultos en el envío.', feats: ['Carga aérea: 7–10 días', 'Carga marítima: 15–25 días', 'Express: 5–7 días', 'Número de seguimiento real', 'Seguro disponible'] },
     exampleTitle: 'Ejemplo real: lo que pagarías',
     exCols: ['Artículo', 'Precio EE. UU.', 'Coste del artículo', 'Comisión', 'Envío', 'Tu total', 'Ahorras'],
     ratesTitle: 'Tarifas de envío transparentes',
@@ -184,6 +186,8 @@ export const es: Dict = {
     heading: 'Preguntas frecuentes',
     sub: 'Todo lo que necesitas saber antes de empezar.',
     items: [
+      { q: '¿Estos productos son auténticos? ¿Trabajáis con réplicas?', a: 'No: solo auténtico al 100 %. Las réplicas y falsificaciones son una línea roja absoluta para nosotros. Compramos productos genuinos y nuevos en canales minoristas y mayoristas oficiales chinos (tiendas insignia de Taobao, Tmall, proveedores verificados de 1688, distribuidores autorizados). Tú mantienes el control: el producto real se fotografía en el control de calidad y lo apruebas antes de enviarlo. Si un vendedor enviara algo que no pediste, te ayudamos a resolverlo antes de que salga de China.' },
+      { q: '¿Por qué vuestros precios son tan bajos? ¿Cómo ganáis dinero?', a: 'Buena pregunta, y queremos ser transparentes. El ahorro viene de los precios locales y mayoristas chinos: el mismo producto genuino suele costar 30–70 % menos que en EE. UU. por la diferencia de mercado y tipo de cambio. Ganamos una comisión por tramos clara (5–15 %, ver Precios) y no escondemos beneficio en envío, tipo de cambio ni tasas falsas. El envío se cobra a coste con el recibo real del transportista. Nada se marca en secreto y cada pago está protegido por PayPal.' },
       { q: '¿Por qué una tarifa de $1 para desbloquear el contacto?', a: 'El $1 único desbloquea a tu agente personal y nuestro contacto directo (WhatsApp / WeChat / Email / teléfono). Mantiene nuestro canal libre de spam y llamadas frías para clientes reales. El $1 se descuenta íntegro de la comisión de tu primer pedido, así que no es realmente un coste.' },
       { q: '¿Qué puedo comprar con vuestro servicio?', a: 'Casi cualquier cosa hecha en China: moda, electrónica, hogar, belleza, juguetes, fabricación a medida. También reservamos vuelos, hoteles, paquetes de viaje y productos digitales. Si existe en China, lo conseguimos.' },
       { q: '¿Cuánto tarda el envío?', a: 'Carga aérea 7–10 días, express 5–7 días, marítima 15–25 días. Recomendamos la mejor opción según tu presupuesto y urgencia.' },
