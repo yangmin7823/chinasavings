@@ -38,6 +38,12 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">{t.footer.about}</p>
+            <a
+              href="/service-card"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-xl transition-colors mb-4"
+            >
+              📇 {t.footer.cardCta} →
+            </a>
             <p className="text-xs text-gray-500">{t.company}</p>
           </div>
 
