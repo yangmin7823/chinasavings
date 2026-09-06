@@ -236,6 +236,15 @@ export const en = {
     companyName: 'Bshine Ltd',
     companyAddr: 'Changsha, Hunan, China', companyNote: 'Licensed & Registered',
     supportLabel: 'Email support',
+    needHeading: 'What do you need?',
+    needSub: 'Pick an option below — we’ll tailor the form for you.',
+    needs: [
+      { icon: '🛒', title: 'Buy from China', desc: 'Purchase items for me from Taobao, 1688, Pinduoduo, Weidian & Tmall.', prompt: 'Paste the product link(s) and quantity you want to buy…', intro: 'I’d like to buy from China. ' },
+      { icon: '🏭', title: 'Find a Supplier', desc: 'Locate a reliable manufacturer or wholesale supplier for your product.', prompt: 'Describe the product / category you want to source…', intro: 'I’m looking for a supplier. ' },
+      { icon: '📦', title: 'Ship My China Orders', desc: 'Consolidate & ship packages you’ve already ordered from Chinese sellers.', prompt: 'Your package tracking numbers or forwarder details…', intro: 'I need help shipping my China orders. ' },
+      { icon: '🔍', title: 'Inspect My Products', desc: 'Get QC photos / inspection of your items before they ship.', prompt: 'Your order / item reference you want inspected…', intro: 'I need my products inspected. ' },
+      { icon: '💬', title: 'Talk to an Agent', desc: 'General questions, guidance or anything else — we reply within 24h.', prompt: 'Ask us anything — we usually reply within 24h.', intro: 'I have a question. ' },
+    ],
     formTitle: 'Send Us Your Request',
     nameLabel: 'Name', namePh: 'Your name',
     emailLabel: 'Email', emailPh: 'your@email.com',
@@ -249,6 +258,7 @@ export const en = {
     privacy: 'By submitting you agree to our privacy policy. We never share your information.',
     successTitle: 'Thank you!',
     successDesc: "We'll reply within 24 hours. For the fastest response, message us on WhatsApp.",
+    sendAnother: 'Send another request',
   },
   footer: {
     about: 'Your personal China shopping agent — we source, inspect, consolidate and ship products from Taobao, 1688, Pinduoduo and Tmall at Chinese local prices.',

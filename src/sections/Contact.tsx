@@ -8,6 +8,27 @@ export default function Contact() {
   const { unlocked, requestUnlock } = useUnlock()
   const [sent, setSent] = useState(false)
   const [qrOpen, setQrOpen] = useState(false)
+  // Selected "what do you need?" intent — 0 = Buy from China by default
+  const [need, setNeed] = useState(0)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [wa, setWa] = useState('')
+  const [err, setErr] = useState('')
+
+  const needDefs = t.contact.needs
+  const active = needDefs[need] ?? needDefs[0]
+  const activeIntro = active?.intro ?? ''
+
+  const handleNeed = (i: number) => {
+    setNeed(i)
+    setSent(false)
+    setErr('')
+    setMessage('')
+    // bring the form into view on small screens
+    const el = document.getElementById('contact-form')
+    if (el && window.innerWidth < 768) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -15,15 +36,52 @@ export default function Contact() {
       requestUnlock()
       return
     }
+    const trimmed = message.trim()
+    if (!trimmed) {
+      setErr(active?.prompt ?? '')
+      return
+    }
+    setErr('')
+    const intro = activeIntro + '\n'
+    const lines = [
+      intro,
+      `${t.contact.nameLabel}: ${name.trim() || '—'}`,
+      `${t.contact.emailLabel}: ${email.trim() || '—'}`,
+      `Request: ${trimmed}`,
+    ]
+    if (wa.trim()) lines.push(`${t.contact.waLabel}: ${wa.trim()}`)
+    const body = lines.join('\n')
+    const url = waLink(body)
+    if (url) window.open(url, '_blank', 'noopener')
     setSent(true)
   }
 
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t.contact.heading}</h2>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto">{t.contact.sub}</p>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-3">{t.contact.needHeading}</h2>
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto">{t.contact.needSub}</p>
+        </div>
+
+        {/* Need selector cards */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12 max-w-6xl mx-auto">
+          {needDefs.map((n, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => handleNeed(i)}
+              className={`text-start rounded-2xl border-2 p-4 transition-all duration-200 flex flex-col ${
+                i === need
+                  ? 'border-red-500 bg-red-50 shadow-md shadow-red-100/50'
+                  : 'border-gray-100 bg-white hover:border-red-200 hover:shadow-sm'
+              }`}
+            >
+              <span className="text-3xl mb-2">{n.icon}</span>
+              <span className={`text-sm font-bold mb-1 ${i === need ? 'text-red-600' : 'text-gray-900'}`}>{n.title}</span>
+              <span className="text-xs text-gray-500 leading-relaxed hidden sm:block">{n.desc}</span>
+            </button>
+          ))}
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
@@ -35,7 +93,6 @@ export default function Contact() {
             </h3>
 
             {!unlocked ? (
-              /* Locked state: NO contact details exposed */
               <div className="rounded-2xl border-2 border-dashed border-gray-200 p-8 text-center bg-gray-50/60">
                 <div className="text-4xl mb-3">🔒</div>
                 <p className="text-gray-700 font-medium mb-2">{t.unlock.title}</p>
@@ -50,9 +107,7 @@ export default function Contact() {
                 <p className="text-[11px] text-gray-400 mt-3">{t.unlock.securityNote}</p>
               </div>
             ) : (
-              /* Unlocked state: show real channels */
               <div className="space-y-5">
-                {/* WhatsApp */}
                 <a
                   href={waLink('')}
                   target="_blank"
@@ -67,7 +122,6 @@ export default function Contact() {
                   <span className="ms-auto text-green-600 text-sm font-medium">→</span>
                 </a>
 
-                {/* WeChat with real QR */}
                 <div>
                   <button
                     type="button"
@@ -85,7 +139,6 @@ export default function Contact() {
                   </button>
                 </div>
 
-                {/* QR enlarge */}
                 {qrOpen && (
                   <div className="fixed inset-0 z-[60] bg-black/70 flex items-center justify-center p-6" onClick={() => setQrOpen(false)}>
                     <div className="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -101,7 +154,6 @@ export default function Contact() {
                   </div>
                 )}
 
-                {/* Email */}
                 <a
                   href={mailtoLink('', '')}
                   className="flex items-center gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors group"
@@ -113,7 +165,6 @@ export default function Contact() {
                   </div>
                 </a>
 
-                {/* Phone (CN) */}
                 <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
                   <div className="w-12 h-12 bg-gray-700 rounded-xl flex items-center justify-center text-white text-xl">📞</div>
                   <div>
@@ -124,7 +175,6 @@ export default function Contact() {
               </div>
             )}
 
-            {/* Company info (always visible) */}
             <div className="mt-8 p-5 bg-gray-50 rounded-xl border border-gray-100">
               <p className="text-sm font-semibold text-gray-900 mb-1">{t.contact.companyName}</p>
               <p className="text-sm text-gray-500">{t.contact.companyAddr}</p>
@@ -138,38 +188,45 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right — form */}
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-6">{t.contact.formTitle}</h3>
+          {/* Right — dynamic form per selected need */}
+          <div id="contact-form">
+            <h3 className="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+              {active?.icon} {active?.title}
+            </h3>
+            <p className="text-sm text-gray-500 mb-6">{active?.desc}</p>
+
             {sent ? (
               <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
                 <div className="text-4xl mb-3">✅</div>
                 <p className="text-lg font-bold text-green-800 mb-1">{t.contact.successTitle}</p>
                 <p className="text-green-700 text-sm">{t.contact.successDesc}</p>
+                <button onClick={() => setSent(false)} className="mt-4 text-sm text-gray-400 hover:text-gray-600 underline">
+                  {t.contact.sendAnother ?? 'Send another request'}
+                </button>
               </div>
             ) : (
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.nameLabel}</label>
-                    <input type="text" required placeholder={t.contact.namePh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm" />
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder={t.contact.namePh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.emailLabel}</label>
-                    <input type="email" required placeholder={t.contact.emailPh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm" />
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t.contact.emailPh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm" />
                   </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.interestLabel}</label>
-                  <select className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm text-gray-700 bg-white">
-                    {t.contact.interestOpts.map((o) => <option key={o}>{o}</option>)}
-                  </select>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.descLabel}</label>
-                  <textarea rows={4} placeholder={t.contact.descPh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm resize-none" />
+                  <textarea
+                    rows={5}
+                    value={message}
+                    onChange={(e) => { setMessage(e.target.value); if (e.target.value.trim()) setErr('') }}
+                    placeholder={active?.prompt}
+                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm resize-none ${err ? 'border-red-400 bg-red-50' : 'border-gray-200'}`}
+                  />
+                  {err && <p className="text-xs text-red-500 mt-1">⚠️ {err}</p>}
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -178,14 +235,9 @@ export default function Contact() {
                     <input type="number" min={1} placeholder={t.contact.qtyPh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.budgetLabel}</label>
-                    <input type="text" placeholder={t.contact.budgetPh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm" />
+                    <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.waLabel}</label>
+                    <input type="text" value={wa} onChange={(e) => setWa(e.target.value)} placeholder={t.contact.waPh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm" />
                   </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">{t.contact.waLabel}</label>
-                  <input type="text" placeholder={t.contact.waPh} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm" />
                 </div>
 
                 {!unlocked ? (
@@ -194,7 +246,7 @@ export default function Contact() {
                   </button>
                 ) : (
                   <button type="submit" className="w-full py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors">
-                    {t.contact.submit} →
+                    {active?.intro ? `💬 ${active.title}` : t.contact.submit} →
                   </button>
                 )}
 

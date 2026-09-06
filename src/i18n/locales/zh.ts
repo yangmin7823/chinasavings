@@ -237,6 +237,15 @@ export const zh: Dict = {
     companyName: 'Bshine Ltd',
     companyAddr: '中国湖南省长沙市', companyNote: '正规注册企业',
     supportLabel: '客服邮箱',
+    needHeading: '您需要什么帮助？',
+    needSub: '选择您的需求——我们会为您定制对应的表单。',
+    needs: [
+      { icon: '🛒', title: '代购中国商品', desc: '从淘宝、1688、拼多多、微店、天猫帮您采购商品。', prompt: '请粘贴商品链接及所需数量…', intro: '我想从中国代购。' },
+      { icon: '🏭', title: '寻找供应商', desc: '帮您找到可靠的工厂或批发供应商。', prompt: '请描述您要采购的产品/品类…', intro: '我在寻找供应商。' },
+      { icon: '📦', title: '转运我的包裹', desc: '把您已在中国买好的包裹合箱并寄出。', prompt: '请提供包裹物流单号或转运信息…', intro: '我需要转运我在中国的订单。' },
+      { icon: '🔍', title: '验货检查', desc: '发货前为您提供QC验货照片/视频。', prompt: '请提供需验货的订单/物品编号…', intro: '我需要验货服务。' },
+      { icon: '💬', title: '咨询客服', desc: '任何疑问、建议或其他需要，24小时内回复。', prompt: '请留下您的问题——我们通常24小时内回复。', intro: '我有一个问题想咨询。' },
+    ],
     formTitle: '提交您的需求',
     nameLabel: '姓名', namePh: '您的姓名',
     emailLabel: '邮箱', emailPh: 'your@email.com',
@@ -250,6 +259,7 @@ export const zh: Dict = {
     privacy: '提交即表示您同意我们的隐私政策。我们绝不出售您的信息。',
     successTitle: '感谢您！',
     successDesc: '我们将在24小时内回复。如需最快响应，请在WhatsApp上直接联系我们。',
+        sendAnother: '再发一个需求',
   },
   footer: {
     about: '您的专属中国购物代理——从淘宝、1688、拼多多、天猫采购商品，提供验货、合箱集运、全球直邮，均按中国本地价。',

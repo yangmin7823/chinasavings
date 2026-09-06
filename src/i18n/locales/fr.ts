@@ -237,6 +237,15 @@ export const fr: Dict = {
     companyName: 'Bshine Ltd',
     companyAddr: 'Changsha, Hunan, Chine', companyNote: 'Immatriculée et enregistrée',
     supportLabel: 'Assistance par e-mail',
+    needHeading: 'De quoi avez-vous besoin ?',
+    needSub: 'Choisissez une option — nous adapterons le formulaire.',
+    needs: [
+      { icon: '🛒', title: 'Acheter depuis la Chine', desc: 'Nous achetons pour vous sur Taobao, 1688, Pinduoduo, Weidian et Tmall.', prompt: 'Collez le(s) lien(s) produit et la quantité…', intro: 'Je souhaite acheter depuis la Chine. ' },
+      { icon: '🏭', title: 'Trouver un fournisseur', desc: 'Nous trouvons un fabricant ou grossiste fiable pour votre produit.', prompt: 'Décrivez le produit / la catégorie recherchée…', intro: 'Je cherche un fournisseur. ' },
+      { icon: '📦', title: 'Expédier mes commandes', desc: 'Consolidation et expédition de colis déjà achetés en Chine.', prompt: 'Numéros de suivi ou infos transporteur…', intro: 'J’ai besoin d’aide pour expédier mes commandes de Chine. ' },
+      { icon: '🔍', title: 'Inspecter mes produits', desc: 'Photos QC / inspection avant expédition.', prompt: 'Référence de votre commande / article à inspecter…', intro: 'J’ai besoin d’une inspection de mes produits. ' },
+      { icon: '💬', title: 'Parler à un agent', desc: 'Questions générales ou conseils — réponse sous 24 h.', prompt: 'Posez-nous votre question — réponse sous 24 h.', intro: 'J’ai une question. ' },
+    ],
     formTitle: 'Envoyez votre demande',
     nameLabel: 'Nom', namePh: 'Votre nom',
     emailLabel: 'Email', emailPh: 'vous@email.com',
@@ -250,6 +259,7 @@ export const fr: Dict = {
     privacy: 'En soumettant, vous acceptez notre politique de confidentialité. Nous ne partageons jamais vos informations.',
     successTitle: 'Merci !',
     successDesc: 'Nous répondrons sous 24 heures. Pour une réponse plus rapide, écrivez-nous sur WhatsApp.',
+        sendAnother: 'Envoyer une autre demande',
   },
   footer: {
     about: 'Votre agent d’achat personnel en Chine : nous sourçons, inspectons, consolidons et expédions des produits de Taobao, 1688, Pinduoduo et Tmall aux prix locaux chinois.',
