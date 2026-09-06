@@ -1,5 +1,5 @@
 """
-  Service-card landing page (clean URL) + SPA fallback for client-side routes.
+  SPA fallback: serve index.html for client-side routes.
+  (Cloudflare Pages serves service-card.html automatically at /service-card.)
 """
-/service-card /service-card.html 200
 /* /index.html 200
