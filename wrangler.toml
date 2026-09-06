@@ -5,6 +5,3 @@ pages_build_output_dir = "dist"
 kv_namespaces = [
   { binding = "REVIEWS", id = "fb175b04805542d8ab163c2cc31bb433" }
 ]
-
-[vars]
-REVIEWS_ADMIN_TOKEN = ""

@@ -11,7 +11,36 @@ const HEADERS = {
 const j = (status, obj) => new Response(JSON.stringify(obj), { status, headers: HEADERS })
 const okBody = { ok: true }
 
-export async function onRequestGet({ env }) {
+export async function onRequestGet({ env, request }) {
+  const url = new URL(request.url)
+  // Debug: GET /api/reviews?debug=1 -> report which bindings exist (never the value)
+  if (url.searchParams.get('debug') === '1') {
+    return j(200, {
+      ok: true,
+      debug: {
+        hasKv: !!env.REVIEWS,
+        hasToken: typeof env.REVIEWS_ADMIN_TOKEN === 'string',
+        tokenLen: typeof env.REVIEWS_ADMIN_TOKEN === 'string' ? env.REVIEWS_ADMIN_TOKEN.length : -1,
+      },
+    })
+  }
+  // Admin: GET /api/reviews?all=1&token=xxx -> all reviews incl. pending
+  if (url.searchParams.get('all') === '1') {
+    const token = url.searchParams.get('token') || ''
+    if (token !== env.REVIEWS_ADMIN_TOKEN) return j(403, { ok: false, error: 'unauthorized' })
+    try {
+      const list = await env.REVIEWS.list({ prefix: 'review:' })
+      const out = []
+      for (const key of list.keys) {
+        try {
+          const rec = JSON.parse(await env.REVIEWS.get(key.name))
+          out.push({ id: key.name.replace('review:', ''), ...rec })
+        } catch { /* skip */ }
+      }
+      out.sort((a, b) => b.createdAt - a.createdAt)
+      return j(200, { ok: true, reviews: out })
+    } catch (e) { return j(500, { ok: false, error: String(e && e.message || e) }) }
+  }
   try {
     const list = await env.REVIEWS.list({ prefix: 'review:' })
     const out = []

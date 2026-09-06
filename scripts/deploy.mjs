@@ -36,6 +36,12 @@ async function main() {
     CLOUDFLARE_API_TOKEN: token,
     CLOUDFLARE_ACCOUNT_ID: ACCOUNT_ID,
   }
+  // Inject review-admin secret from local git-ignored file (overrides empty project var at deploy time)
+  const secretFile = join(root, '.review-secret')
+  if (existsSync(secretFile)) {
+    const s = (await readFile(secretFile, 'utf8')).trim()
+    if (s) env.REVIEWS_ADMIN_TOKEN = s
+  }
   try {
     const { stdout } = await run(
       process.execPath,

@@ -1,0 +1,29 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/reviews",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/reviews.js:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/reviews",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/reviews.js:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/track",
+      "mountPath": "/api",
+      "method": "",
+      "module": [
+        "api/track.ts:onRequest"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
