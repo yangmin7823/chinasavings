@@ -140,6 +140,13 @@ export function UnlockProvider({ children }: { children: React.ReactNode }) {
                   </div>
                 )}
                 <p className="text-xs text-gray-500 mt-2">{t.unlock.successNote}</p>
+                <a
+                  href="#reviews"
+                  onClick={() => { closeModal(); setTimeout(() => { const el = document.querySelector('#reviews'); if (el) el.scrollIntoView({ behavior: 'smooth' }) }, 100) }}
+                  className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 hover:text-green-800"
+                >
+                  ⭐ {t.unlock.reviewCta ?? 'Review your order — helps other buyers'}
+                </a>
               </div>
             ) : payClicked ? (
               /* PayPal 已打开：要求填写交易号/付款邮箱后才能解锁 */

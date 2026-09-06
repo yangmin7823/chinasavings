@@ -65,6 +65,11 @@ export default function PriceComparison() {
         </div>
 
         <p className="text-center text-sm text-gray-400 mt-6">{t.prices.footnote}</p>
+
+        {/* Brand & price disclaimer — avoid replica / price-misleading concerns */}
+        <div className="max-w-4xl mx-auto mt-5 rounded-xl bg-amber-50 border border-amber-200 px-5 py-3.5">
+          <p className="text-xs text-amber-800 leading-relaxed">{t.prices.disclaimer}</p>
+        </div>
       </div>
     </section>
   )
