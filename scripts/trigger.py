@@ -288,5 +288,5 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__&#8203;main__":
+if __name__ == "__main__":
     sys.exit(main())
