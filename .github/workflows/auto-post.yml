@@ -1,1 +1,50 @@
-bta_1c8f4e2d9b7a3c5e6f0d2847a1b93c5e8f2d6a4b
+# BuyTCN Blog 自动更新（方案 B：生成在 GitHub Actions 内直连 Agnes）
+# 每周定时跑 scripts/trigger.py：
+#   选题去重 -> Agnes 生成（AGNES_API_KEY）-> 质检 -> 调站点 admin 接口存 DRAFT /
+#   （dry_run=false 时）publish。
+# 注意：
+#  - cron 用 UTC，北京时间为 UTC+8；避开整点用奇数分钟。
+#  - 公开仓库若 60 天无提交，GitHub 会自动禁用定时任务 —— 请每月至少提交一次保活。
+name: buy-blog-auto-post
+
+on:
+  schedule:
+    # 北京时间每周三、周日 15:17（UTC 07:17）
+    - cron: '17 7 * * 0,3'
+  workflow_dispatch: # 手动触发
+    inputs:
+      dry_run:
+        description: 'dry_run=true 只生成草稿不发布（默认 true）'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+concurrency:
+  group: blog-auto
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Trigger auto-generate
+        env:
+          BLOG_ADMIN_TOKEN: ${{ secrets.BLOG_ADMIN_TOKEN }}
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+          AGNES_BASE_URL: ${{ secrets.AGNES_BASE_URL }}
+          AGNES_MODEL: ${{ secrets.AGNES_MODEL }}
+          DRY_RUN: ${{ inputs.dry_run || 'true' }}
+          # 可选通知 webhook（钉钉/飞书/Server酱），不填则静默
+          NOTIFY_URL: ${{ secrets.NOTIFY_URL }}
+        run: python scripts/trigger.py
