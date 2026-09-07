@@ -48,13 +48,4 @@ jobs:
           # 可选通知 webhook（钉钉/飞书/Server酱），不填则静默
           NOTIFY_URL: ${{ secrets.NOTIFY_URL }}
         run: |
-          echo "== run trigger.py (captured) =="
-          python -u scripts/trigger.py > /tmp/tout.log 2>&1
-          ec=$?
-          echo "PYTHON_EXIT=$ec"
-          echo "PYTHON_EXIT=$ec" >> "$GITHUB_STEP_SUMMARY"
-          echo "## script output:" >> "$GITHUB_STEP_SUMMARY"
-          cat /tmp/tout.log >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
-          echo "== end output =="
-          cat /tmp/tout.log 2>/dev/null || true
-          exit $ec
+          python -u scripts/trigger.py
