@@ -47,4 +47,6 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run || 'true' }}
           # 可选通知 webhook（钉钉/飞书/Server酱），不填则静默
           NOTIFY_URL: ${{ secrets.NOTIFY_URL }}
-        run: python scripts/trigger.py
+        run: |
+          python -c "print('PROBE_OK scripts:'); import os; print('trigger exists:', os.path.exists('scripts/trigger.py'), '| size:', os.path.getsize('scripts/trigger.py') if os.path.exists('scripts/trigger.py') else -1)"
+          python scripts/trigger.py
