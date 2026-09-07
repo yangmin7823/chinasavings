@@ -48,5 +48,11 @@ jobs:
           # 可选通知 webhook（钉钉/飞书/Server酱），不填则静默
           NOTIFY_URL: ${{ secrets.NOTIFY_URL }}
         run: |
-          python -c "print('PROBE_OK scripts:'); import os; print('trigger exists:', os.path.exists('scripts/trigger.py'), '| size:', os.path.getsize('scripts/trigger.py') if os.path.exists('scripts/trigger.py') else -1)"
-          python scripts/trigger.py
+          echo "== trigger exists =="
+          ls -la scripts/trigger.py || echo "MISSING trigger.py"
+          echo "== run with timeout trace =="
+          timeout 240 python -u -X faulthandler scripts/trigger.py
+          echo "PYTHON_EXIT=$?"
+          echo "PYTHON_EXIT=$?" >> "$GITHUB_STEP_SUMMARY"
+          echo "## Trigger done" >> "$GITHUB_STEP_SUMMARY"
+          tail -20 /tmp/nonexist 2>/dev/null || true
