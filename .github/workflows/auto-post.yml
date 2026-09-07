@@ -48,12 +48,13 @@ jobs:
           # 可选通知 webhook（钉钉/飞书/Server酱），不填则静默
           NOTIFY_URL: ${{ secrets.NOTIFY_URL }}
         run: |
-          echo "== connectivity test =="
-          python -u -c "import urllib.request; print('posts_http=', urllib.request.urlopen('https://www.buytcn.com/api/blog/posts?limit=1', timeout=20).status)"
-          python -u -c "import urllib.request; r=urllib.request.Request('https://www.buytcn.com/api/blog/admin?all=1', headers={'Authorization':'Bearer '+__import__('os').environ['BLOG_ADMIN_TOKEN']}); print('admin_http=', urllib.request.urlopen(r, timeout=20).status)"
-          echo "== run script captured =="
+          echo "== run trigger.py (captured) =="
           python -u scripts/trigger.py > /tmp/tout.log 2>&1
-          echo "PYTHON_EXIT=$?"
-          echo "PYTHON_EXIT=$?" >> "$GITHUB_STEP_SUMMARY"
-          echo "## stdout/stderr:" >> "$GITHUB_STEP_SUMMARY"
-          cat /tmp/tout.log >> "$GITHUB_STEP_SUMMARY" || true
+          ec=$?
+          echo "PYTHON_EXIT=$ec"
+          echo "PYTHON_EXIT=$ec" >> "$GITHUB_STEP_SUMMARY"
+          echo "## script output:" >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/tout.log >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          echo "== end output =="
+          cat /tmp/tout.log 2>/dev/null || true
+          exit $ec
