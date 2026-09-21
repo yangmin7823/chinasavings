@@ -14,7 +14,7 @@
   BLOG_ADMIN_TOKEN  必填。站点管理 token
   AGNES_BASE_URL    必填，默认 https://apihub.agnes-ai.com/v1
   AGNES_API_KEY      必填。Agnes 平台创建
-  AGNES_MODEL        必填，默认 agnes-3.0-flash
+  AGNES_MODEL        可选。默认 agnes-3.0-flash；Actions 里的同名 secret 若为空则自动落回此默认
   AGNES_FALLBACK_MODEL 可选，默认 agnes-2.5-flash。主力模型超时/无响应时自动退回它。
   DRY_RUN            true/false，默认 true（只存 DRAFT，不发布）
   NOTIFY_URL         可选 webhook
@@ -30,9 +30,12 @@ import urllib.request
 SITE = os.environ.get("SITE", "https://www.buytcn.com").rstrip("/")
 AGNES_BASE = os.environ.get("AGNES_BASE_URL", "https://apihub.agnes-ai.com/v1").rstrip("/")
 AGNES_KEY = os.environ.get("AGNES_API_KEY", "").strip()
-AGNES_MODEL = os.environ.get("AGNES_MODEL", "agnes-3.0-flash").strip()
+# ⚠️ 坑：auto-post.yml 里 `AGNES_MODEL: ${{ secrets.AGNES_MODEL }}` 当 secret 被删/为空时，
+# env 变量存在但值是空串，os.environ.get("AGNES_MODEL", 默认值) 会拿到 ""（默认值不生效），
+# 空模型名发给 Agnes 是 400 → 直接 SystemExit，整个任务挂掉。所以空值要手动落回默认。
+AGNES_MODEL = os.environ.get("AGNES_MODEL", "").strip() or "agnes-3.0-flash"
 # 模型链：主力 3.0-flash，超时/无响应时自动退到 2.5-flash（实测 3.0 偶发卡住，2.5 秒回）。
-AGNES_FALLBACK_MODEL = os.environ.get("AGNES_FALLBACK_MODEL", "agnes-2.5-flash").strip()
+AGNES_FALLBACK_MODEL = os.environ.get("AGNES_FALLBACK_MODEL", "").strip() or "agnes-2.5-flash"
 AGNES_MODEL_CHAIN = [AGNES_MODEL] + ([AGNES_FALLBACK_MODEL] if AGNES_FALLBACK_MODEL and AGNES_FALLBACK_MODEL != AGNES_MODEL else [])
 DRY_RUN = os.environ.get("DRY_RUN", "true").strip().lower() != "false"
 TOKEN = os.environ.get("BLOG_ADMIN_TOKEN", "").strip()
