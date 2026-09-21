@@ -14,7 +14,8 @@
   BLOG_ADMIN_TOKEN  必填。站点管理 token
   AGNES_BASE_URL    必填，默认 https://apihub.agnes-ai.com/v1
   AGNES_API_KEY      必填。Agnes 平台创建
-  AGNES_MODEL        必填，默认 agnes-2.5-flash
+  AGNES_MODEL        必填，默认 agnes-3.0-flash
+  AGNES_FALLBACK_MODEL 可选，默认 agnes-2.5-flash。主力模型超时/无响应时自动退回它。
   DRY_RUN            true/false，默认 true（只存 DRAFT，不发布）
   NOTIFY_URL         可选 webhook
   SITE               默认 https://www.buytcn.com
@@ -29,7 +30,10 @@ import urllib.request
 SITE = os.environ.get("SITE", "https://www.buytcn.com").rstrip("/")
 AGNES_BASE = os.environ.get("AGNES_BASE_URL", "https://apihub.agnes-ai.com/v1").rstrip("/")
 AGNES_KEY = os.environ.get("AGNES_API_KEY", "").strip()
-AGNES_MODEL = os.environ.get("AGNES_MODEL", "agnes-2.5-flash").strip()
+AGNES_MODEL = os.environ.get("AGNES_MODEL", "agnes-3.0-flash").strip()
+# 模型链：主力 3.0-flash，超时/无响应时自动退到 2.5-flash（实测 3.0 偶发卡住，2.5 秒回）。
+AGNES_FALLBACK_MODEL = os.environ.get("AGNES_FALLBACK_MODEL", "agnes-2.5-flash").strip()
+AGNES_MODEL_CHAIN = [AGNES_MODEL] + ([AGNES_FALLBACK_MODEL] if AGNES_FALLBACK_MODEL and AGNES_FALLBACK_MODEL != AGNES_MODEL else [])
 DRY_RUN = os.environ.get("DRY_RUN", "true").strip().lower() != "false"
 TOKEN = os.environ.get("BLOG_ADMIN_TOKEN", "").strip()
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
@@ -74,31 +78,54 @@ def api(path: str, payload: dict | None = None, method: str = "POST", timeout: i
     raise SystemExit(f"站点 API 调用失败 {method} {path}: {last}")
 
 
-def agnes_chat(system: str, user: str, timeout: int = 240) -> str:
-    """直连 Agnes（OpenAI 兼容），带退避重试。"""
+def agnes_chat(system: str, user: str, timeout: int = 150, attempts_per_model: int = 2) -> str:
+    """直连 Agnes（OpenAI 兼容）。先试主力模型（默认 agnes-3.0-flash），
+    超时/无响应时自动退到兜底模型（默认 agnes-2.5-flash）。
+
+    实测（2026-09-21）3.0-flash 偶发「卡住不返回」（45/120/240s 都超时），
+    2.5-flash 同样请求 1~2s 就回。所以做成模型链：
+      · 3.0 好了 → 自动用上，质量更高
+      · 3.0 卡住 → 每个模型跑满 attempts_per_model 次后自动退到 2.5，任务不挂
+
+    每个模型内做有限次退避重试；4xx（除 429）视为参数/鉴权错误，换模型救不了，直接终止。
+    429 / 5xx / 超时（socket.timeout）→ 退避重试，用尽后换下一个模型。"""
     if not AGNES_KEY:
         raise SystemExit("缺少 AGNES_API_KEY")
     url = AGNES_BASE + "/chat/completions"
-    body = json.dumps({
-        "model": AGNES_MODEL,
-        "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
-        "temperature": 0.6,
-    }).encode()
-    last = ""
-    for attempt in range(1, 5):
-        try:
-            req = urllib.request.Request(url, data=body, headers={
-                "Content-Type": "application/json", "User-Agent": UA,
-                "Authorization": "Bearer " + AGNES_KEY})
-            with urllib.request.urlopen(req, timeout=timeout) as r:
-                d = json.loads(r.read().decode())
-                return (d.get("choices") or [{}])[0].get("message", {}).get("content", "")
-        except urllib.error.HTTPError as e:
-            last = f"HTTP {e.code}: {e.read().decode()[:160]}"
-        except Exception as e:  # noqa: BLE001
-            last = f"{type(e).__name__}: {e}"
-        time.sleep(8 * attempt)
-    raise SystemExit(f"Agnes 调用失败（尝试 4 次）: {last}")
+    headers = {"Content-Type": "application/json", "User-Agent": UA,
+               "Authorization": "Bearer " + AGNES_KEY}
+    msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
+
+    overall = []
+    for model in AGNES_MODEL_CHAIN:
+        body = json.dumps({"model": model, "messages": msgs, "temperature": 0.6}).encode()
+        last = ""
+        for attempt in range(1, attempts_per_model + 1):
+            try:
+                req = urllib.request.Request(url, data=body, headers=headers, method="POST")
+                with urllib.request.urlopen(req, timeout=timeout) as r:
+                    d = json.loads(r.read().decode())
+                    content = (d.get("choices") or [{}])[0].get("message", {}).get("content", "")
+                if content:
+                    print(f"[agnes] 模型 {model} 第 {attempt} 次成功")
+                    return content
+                last = "返回内容为空"
+            except urllib.error.HTTPError as e:
+                last = f"HTTP {e.code}: {e.read().decode()[:160]}"
+                if e.code == 429:  # 限流：退避后重试
+                    time.sleep(8 * attempt)
+                    continue
+                if 400 <= e.code < 500:  # 参数/鉴权错误，换模型也没用
+                    overall.append(f"{model}: {last}")
+                    raise SystemExit(f"Agnes 调用失败 {model}: {last}")
+                time.sleep(8 * attempt)  # 5xx：退避重试
+            except Exception as e:  # 超时 (socket.timeout) / 网络错误：退避重试
+                last = f"{type(e).__name__}: {e}"
+                print(f"[agnes] {model} 第 {attempt} 次失败：{last}")
+                time.sleep(8 * attempt)
+        # 该模型用尽尝试 → 记下，自动退到下一个模型
+        overall.append(f"{model}: {last}")
+    raise SystemExit(f"Agnes 调用失败（所有模型）: {' | '.join(overall)}")
 
 
 def slugify(s: str) -> str:
