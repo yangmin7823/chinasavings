@@ -1,0 +1,74 @@
+# BuyTCN — Your Personal Buyer in China
+
+> BuyTCN is a China shopping & sourcing agent for people outside China. Send us a link from Taobao, 1688, Pinduoduo, Tmall, Weidian or JD — or just describe what you need — and we purchase it in China, run a basic quality check with photos, consolidate packages and coordinate international shipping. No registration, no Chinese account, no Chinese payment method, no language barrier required.
+
+## What we do
+- **Marketplace purchasing** — We buy eligible items from Chinese marketplaces on your behalf, handle seller communication, receive items at our China warehouse, do basic QC (eligible orders) and coordinate international shipping.
+- **Supplier / factory sourcing** — For wholesale, custom or business orders we help find Chinese suppliers, wholesalers and manufacturers based on product, quantity, target price and requirements.
+- **QC & inspection** — Basic visual/quantity checks with photos for eligible orders before shipment.
+- **Package consolidation** — Combine eligible items from multiple sellers so they ship together when possible.
+- **International shipping** — Coordinate delivery to your destination, with tracking.
+
+## Pricing (transparent, shown before you confirm)
+- Service fee starts at **$20** and decreases progressively as the merchandise value grows (as low as ~5% on the portion above $20,000).
+- What you pay = **product cost + China domestic shipping + service fee + international shipping + any other applicable charges**. No guessing, no black box.
+- Free quote within 24h. No payment needed to ask. Duties & taxes not included unless stated in the quote.
+
+## How it works (6 steps)
+1. Send a product link, photo, description or requirement.
+2. We find the right source (marketplace / supplier / manufacturer).
+3. You get a clear itemized quote.
+4. You confirm and pay.
+5. We purchase & inspect (QC photos where eligible).
+6. We ship internationally and provide tracking.
+
+## Target customers
+- Personal shoppers / gift buyers / small orders
+- Wholesale & resellers, e-commerce sellers (Amazon, Shopify, Etsy, own store)
+- Custom / private-label & OEM/ODM buyers
+- Anyone who can find it in China but can't navigate Chinese marketplaces
+
+## Main pages
+- [Home](https://www.buytcn.com/) — overview, services, process, fees, contact/submit a link
+- [Business / Sourcing](https://www.buytcn.com/business/) — supplier, factory, wholesale sourcing for business buyers
+- [Pricing](https://www.buytcn.com/pricing/) — tiered service fees and what's included
+- [Payment](https://www.buytcn.com/payment/) — available payment methods
+- [FAQ](https://www.buytcn.com/faq/) — common questions
+- [About](https://www.buytcn.com/about/) — about BuyTCN
+- [Blog](https://www.buytcn.com/blog/) — buying guides & China sourcing content
+- [Service Card](https://www.buytcn.com/service-card) — service overview card
+
+## Service landing pages
+- [Taobao shopping agent](https://www.buytcn.com/taobao-shopping-agent)
+- [1688 agent](https://www.buytcn.com/1688-agent)
+- [Weidian agent](https://www.buytcn.com/weidian-agent)
+- [Pinduoduo agent](https://www.buytcn.com/pinduoduo-agent)
+- [China sourcing agent](https://www.buytcn.com/china-sourcing-agent)
+- [China product inspection](https://www.buytcn.com/china-product-inspection)
+- [China package consolidation](https://www.buytcn.com/china-package-consolidation)
+- [Buy from Taobao](https://www.buytcn.com/buy-from-taobao)
+- [Buy from 1688](https://www.buytcn.com/buy-from-1688)
+- [Buy from China (ship to USA)](https://www.buytcn.com/buy-from-china-usa)
+
+## Blog posts
+- [How to buy from Taobao in the USA](https://www.buytcn.com/blog/how-to-buy-from-taobao-in-the-usa)
+- [1688 vs Alibaba: which is better for sourcing](https://www.buytcn.com/blog/1688-vs-alibaba-which-is-better-for-sourcing)
+- [Private label manufacturing in China — getting started](https://www.buytcn.com/blog/private-label-manufacturing-china-getting-started)
+- [China factory sourcing guide for small importers](https://www.buytcn.com/blog/china-factory-sourcing-guide-small-importers)
+- [Taobao vs 1688 for international buyers](https://www.buytcn.com/blog/taobao-vs-1688-international-buyers)
+- [What is a 1688 agent and when to use one](https://www.buytcn.com/blog/what-is-a-1688-agent-and-when-to-use-one)
+- [How to find reliable Chinese suppliers](https://www.buytcn.com/blog/how-to-find-reliable-chinese-suppliers)
+
+## Languages
+English (default), Chinese, Spanish, French, Arabic — same content under locale prefixes `/zh/`, `/es/`, `/fr/`, `/ar/`.
+
+## Contact & actions
+- **Email:** service@buytcn.com
+- **Submit a product link / get a quote:** homepage "Submit a Product Link" section (replies on WhatsApp) or email.
+- **Track a package:** enter your tracking number (carriers incl. Cainiao, Yanwen, YunExpress, USPS, DHL, FedEx, UPS, DPD, SF, ZTO, YTO, Yunda, JD, China EMS).
+
+## Restrictions
+Some restricted, dangerous, counterfeit or otherwise prohibited products cannot be purchased or shipped. Eligibility depends on product availability, payment, shipping requirements and applicable laws/regulations.
+
+## Sitemap
+https://www.buytcn.com/sitemap.xml

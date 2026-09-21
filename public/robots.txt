@@ -1,4 +1,48 @@
+# ============================================================
+# robots.txt — www.buytcn.com
+# Purpose: let search engines and AI assistants read the site,
+# keep AI from training on it, and hide internal endpoints.
+# ============================================================
+
+# --- Default: allow everything public ---
 User-agent: *
 Allow: /
+# Hide internal APIs / admin tooling from general crawlers
+Disallow: /api/
+Disallow: /admin-reviews.html
 
+# --- AI assistants / search (retrieval-class: allowed) ---
+# These make BuyTCN citable in AI answers & AI search.
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: meta-externalagent
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Search
+Allow: /
+
+# --- AI training / aggressive scraping (blocked: no training on our content) ---
+User-agent: Google-Extended
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+User-agent: CloudflareBrowserRenderingCrawler
+Disallow: /
+
+# --- Sitemap ---
 Sitemap: https://www.buytcn.com/sitemap.xml
