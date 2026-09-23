@@ -15,6 +15,7 @@ import Pricing from './sections/Pricing'
 import FAQ from './sections/FAQ'
 import Contact from './sections/Contact'
 import Footer from './sections/Footer'
+import FloatingContact from './sections/FloatingContact'
 import BlogRouter from './pages/BlogRouter'
 import PagesRouter from './pages/PagesRouter'
 import { sitePageForPath } from './content/site-content'
@@ -39,6 +40,8 @@ function Site() {
         <Contact />
       </main>
       <Footer />
+      {/* 悬浮联系面板（右侧随滚动常驻）+ 右上角分享按钮 */}
+      <FloatingContact />
     </div>
   )
 }

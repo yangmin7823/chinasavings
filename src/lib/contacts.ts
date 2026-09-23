@@ -8,10 +8,11 @@ export const CONTACTS = {
   // WhatsApp（沿用旧号 +86 153 8759 2595）
   whatsappNum: '8615387592595',
   whatsappDisplay: '+86 153 8759 2595',
-  // 微信 ID
-  wechat: 'bshine01',
-  // 邮箱（对外统一用域名邮箱 service@buytcn.com，经 Cloudflare Email Routing 转发至 yangmin7823@gmail.com）
-  email: 'service@buytcn.com',
+  // 微信 ID（2026-09-23 用户指定展示口径：Bshine01；微信 ID 不区分大小写）
+  wechat: 'Bshine01',
+  // 邮箱（对外统一用域名邮箱 services@buytcn.com；旧口径 service@buytcn.com 保留为 secondary）
+  email: 'services@buytcn.com',
+  emailSecondary: 'service@buytcn.com',
   // PayPal 收款 —— ★ $1 支付
   // 方式A：Hosted Buttons 内嵌按钮（推荐，页面内直接支付）：
   paypalClientId: 'BAA-QTpqyxkgHeTVWDEcVOYwtpCMNjH5gvH1D02OQ90qjmThu1obDPKnSGJMN4yYafmCBtgTvO5KkT15MA',
