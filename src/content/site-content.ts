@@ -237,7 +237,7 @@ const faqJsonLd = [
         "name": "How do I buy from Taobao or 1688 internationally?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Easy — use us as your Taobao agent. Taobao and 1688 don't ship overseas or accept foreign cards, so you paste the product link here, we buy it at the Chinese price, take free QC photos for you to approve, consolidate your parcels, then ship worldwide with full tracking. That's the whole point of a China shopping agent."
+          "text": "Easy — use us as your Taobao agent. Taobao and 1688 don't ship overseas or accept foreign cards, so you paste the product link here, we buy it at the Chinese price, take QC photos for eligible orders for you to approve, consolidate your parcels, then ship worldwide with full tracking. That's the whole point of a China shopping agent."
         }
       },
       {
@@ -261,7 +261,7 @@ const faqJsonLd = [
         "name": "Can I return, cancel or get a refund?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Most Chinese suppliers do not accept returns, and cancellation/refund depends on the stage of the order. Before we purchase anything, you can cancel at no cost. After purchase, some costs (product, China domestic shipping, customization) may already be non-refundable. That is why free QC photos come before shipping: you approve the real item first, or we don’t ship it. If something isn’t right, contact us and our order team will review the order and payment status first, check what costs have been incurred, and confirm the available options before any action."
+          "text": "Most Chinese suppliers do not accept returns, and cancellation/refund depends on the stage of the order. Before we purchase anything, you can cancel at no cost. After purchase, some costs (product, China domestic shipping, customization) may already be non-refundable. That is why QC photos for eligible orders come before shipping: you approve the real item first, or we don't ship it. If something isn't right, contact us and our order team will review the order and payment status first, check what costs have been incurred, and confirm the available options before any action."
         }
       },
       {
@@ -285,7 +285,7 @@ const faqJsonLd = [
         "name": "Be honest — what are the real risks?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We respect you enough to be upfront. (1) Most Chinese suppliers don’t accept returns. (2) Online photos can look better than the real item — and once it’s shipped, returning it is usually not realistic, so we help you judge the actual quality through real QC photos before anything leaves China. (3) International shipping takes time and your local customs may charge duties. (4) Disputes with a foreign seller are harder than local shopping. That is exactly why our process is built around free QC photos before shipping — and why insurance is available on every order."
+          "text": "We respect you enough to be upfront. (1) Most Chinese suppliers don't accept returns. (2) Online photos can look better than the real item — and once it's shipped, returning it is usually not realistic, so we help you judge the actual quality through real QC photos before anything leaves China. (3) International shipping takes time and your local customs may charge duties. (4) Disputes with a foreign seller are harder than local shopping. That is exactly why our process is built around QC photos before shipping for eligible orders — and why insurance is available on every order."
         }
       },
       {
