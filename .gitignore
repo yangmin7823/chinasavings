@@ -34,3 +34,6 @@ _tmparchive/
 _*.mjs
 _dev.out
 _dev.err
+
+# Windows reserved device name (accidentally created file, cannot be renamed/deleted on Windows)
+nul
