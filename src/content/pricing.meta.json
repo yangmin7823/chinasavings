@@ -1,0 +1,14 @@
+{
+  "name": "pricing",
+  "title": "Transparent, Tiered Service Fees | BuyTCN",
+  "description": "BuyTCN's transparent, tiered service fees: from $20 on small orders, dropping to 5% on the portion above $20,000. International shipping charged at real cost.",
+  "canonical": "https://www.buytcn.com/pricing/",
+  "mainChars": 11374,
+  "floatingChars": 3087,
+  "jsonLdCount": 2,
+  "hasDetails": false,
+  "hasInput": false,
+  "hasButton": false,
+  "headings": 5,
+  "tables": 2
+}

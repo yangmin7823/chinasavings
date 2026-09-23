@@ -20,10 +20,19 @@ export default function Navbar() {
     { label: t.nav.reviews, href: '#reviews' },
     { label: t.nav.pricing, href: '#pricing' },
     { label: t.nav.faq, href: '#faq' },
+    // 站内路由（非锚点）：进入 /blog/ 的 China Sourcing Guide
+    { label: 'Guide', href: '/blog/', route: true },
   ]
 
   const scrollTo = (href: string) => {
     setOpen(false)
+    // 非锚点 → 交给 App 的客户端路由切换，不整页刷新
+    if (!href.startsWith('#')) {
+      window.history.pushState({}, '', href)
+      window.dispatchEvent(new PopStateEvent('popstate'))
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }

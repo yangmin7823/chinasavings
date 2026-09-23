@@ -1,0 +1,14 @@
+{
+  "name": "payment",
+  "title": "Flexible Payment Options | BuyTCN",
+  "description": "Payment options for your BuyTCN order: PayPal for small orders, plus Wise, XTransfer, LianLian, WorldFirst, Payoneer or bank transfer for larger orders.",
+  "canonical": "https://www.buytcn.com/payment/",
+  "mainChars": 6958,
+  "floatingChars": 3087,
+  "jsonLdCount": 2,
+  "hasDetails": false,
+  "hasInput": true,
+  "hasButton": true,
+  "headings": 5,
+  "tables": 0
+}

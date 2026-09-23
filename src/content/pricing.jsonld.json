@@ -1,0 +1,45 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BuyTCN",
+    "legalName": "Bshine Ltd",
+    "alternateName": "Changsha Baichen Enterprise Development Co., Ltd",
+    "url": "https://www.buytcn.com/",
+    "logo": "https://www.buytcn.com/icon-512.png",
+    "image": "https://www.buytcn.com/og-image.png",
+    "description": "Your personal buyer in China. We purchase from Chinese marketplaces (Taobao, 1688, Pinduoduo, Tmall, JD), inspect with real QC photos, consolidate and ship worldwide. Marketplace shopping and supplier/factory sourcing.",
+    "areaServed": "Worldwide",
+    "paymentAccepted": "PayPal, Wise, XTransfer, LianLian, WorldFirst, Payoneer, Bank Transfer",
+    "email": "service@buytcn.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Changsha",
+      "addressRegion": "Hunan",
+      "addressCountry": "CN"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "service@buytcn.com",
+        "telephone": "+86-153-8759-2595",
+        "availableLanguage": [
+          "en",
+          "zh",
+          "es",
+          "fr",
+          "ar"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BuyTCN",
+    "alternateName": "BuyTCN China Shopping Agent",
+    "url": "https://www.buytcn.com/",
+    "inLanguage": "en"
+  }
+]

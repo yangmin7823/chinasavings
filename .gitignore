@@ -25,3 +25,12 @@ Thumbs.db
 # local cloudflare deploy token (never commit)
 .cloudflare-token
 .review-secret
+
+# wrangler local build scratch
+.wrangler/
+
+# local deploy scratch / archived ad-hoc scripts (may contain secrets)
+_tmparchive/
+_*.mjs
+_dev.out
+_dev.err

@@ -1,0 +1,14 @@
+{
+  "name": "about",
+  "title": "About Us | BuyTCN",
+  "description": "BuyTCN is a China shopping agent run by Bshine Ltd in Changsha, Hunan, helping overseas buyers purchase from Taobao, 1688, Weidian, Pinduoduo, Tmall and JD.",
+  "canonical": "https://www.buytcn.com/about/",
+  "mainChars": 1886,
+  "floatingChars": 3087,
+  "jsonLdCount": 2,
+  "hasDetails": false,
+  "hasInput": false,
+  "hasButton": false,
+  "headings": 1,
+  "tables": 0
+}

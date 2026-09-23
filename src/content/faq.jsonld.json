@@ -1,0 +1,292 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BuyTCN",
+    "legalName": "Bshine Ltd",
+    "alternateName": "Changsha Baichen Enterprise Development Co., Ltd",
+    "url": "https://www.buytcn.com/",
+    "logo": "https://www.buytcn.com/icon-512.png",
+    "image": "https://www.buytcn.com/og-image.png",
+    "description": "Your personal buyer in China. We purchase from Chinese marketplaces (Taobao, 1688, Pinduoduo, Tmall, JD), inspect with real QC photos, consolidate and ship worldwide. Marketplace shopping and supplier/factory sourcing.",
+    "areaServed": "Worldwide",
+    "paymentAccepted": "PayPal, Wise, XTransfer, LianLian, WorldFirst, Payoneer, Bank Transfer",
+    "email": "service@buytcn.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Changsha",
+      "addressRegion": "Hunan",
+      "addressCountry": "CN"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "service@buytcn.com",
+        "telephone": "+86-153-8759-2595",
+        "availableLanguage": [
+          "en",
+          "zh",
+          "es",
+          "fr",
+          "ar"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BuyTCN",
+    "alternateName": "BuyTCN China Shopping Agent",
+    "url": "https://www.buytcn.com/",
+    "inLanguage": "en"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "en",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Will I receive exactly what I ordered?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We purchase the item specified in your confirmed order. Where eligible, we provide QC photos before international shipping so you can review the visible condition of your products. If a seller sends the wrong item or there is an obvious discrepancy, we’ll help review the situation and discuss the available options before shipment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is BuyTCN?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BuyTCN helps international customers purchase products from Chinese marketplaces and suppliers. We handle purchasing, seller communication, warehouse receiving, quality checks, package consolidation and international shipping."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a Chinese bank account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. You don’t need a Chinese bank account to use our service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a Chinese phone number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not necessarily. In most cases, you can simply send us the product link and let us handle the purchasing process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the products authentic?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We purchase products from the seller or marketplace you specify. We do not represent counterfeit products as authentic. For branded products, authenticity should be evaluated carefully before purchase. We can help you understand the seller information and available product details, but we cannot guarantee authenticity unless specifically verified through an appropriate source."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are your prices so much lower? How do you make money?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Great question — we want it transparent. The savings come from Chinese local and wholesale prices, which for the same item are often significantly below typical US retail prices; the currency and China’s domestic market simply price things differently. We earn a clear progressive service fee (starts at $20, rates from 5–20% depending on the portion of your order — see Pricing). Shipping is charged at the carrier’s rate with no markup, and every total is confirmed on your quote before you pay."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to create an account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. You can paste a product link and get a free quote without any account or registration. A $1 activation is only needed when you’re ready to start an actual order — and it’s fully credited toward that order’s service fee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why a $1 activation fee?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Requesting quotes is free. When you’re ready to start an order, a one-time $1 activates your personal agent and is fully credited toward your first order’s service fee. It simply confirms you’re a real buyer, so our team can focus on serving customers — and it’s not a real cost to you."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What can I buy through your service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We can help source a wide range of products from Chinese marketplaces and suppliers — fashion, electronics, home goods, beauty, toys, custom manufacturing and more. Some restricted, regulated, dangerous, counterfeit or otherwise prohibited products cannot be purchased or shipped."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does shipping take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Typical transit times are estimates only and may vary depending on the destination, carrier, customs clearance and shipping route. As a guide: express typically 5–10 business days, air freight typically 7–15 business days, sea freight typically 20–40 days. We recommend the best option for your budget and deadline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I buy from Taobao or 1688 internationally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Easy — use us as your Taobao agent. Taobao and 1688 don't ship overseas or accept foreign cards, so you paste the product link here, we buy it at the Chinese price, take free QC photos for you to approve, consolidate your parcels, then ship worldwide with full tracking. That's the whole point of a China shopping agent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will I have to pay customs duties?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Possibly — import duties and taxes depend on your country and the package value. Wherever they apply, customs duties, import taxes and customs-brokerage (declaration) fees are always charged at actual cost with no markup, and the exact amount is confirmed on your quote before you pay. We can also suggest shipping lines with duties included (DDP) for smoother delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if my item arrives damaged?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We pack professionally with bubble wrap and foam. If damage still occurs, we help you file a claim — and optional shipping insurance makes reimbursement fast and easy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I return, cancel or get a refund?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most Chinese suppliers do not accept returns, and cancellation/refund depends on the stage of the order. Before we purchase anything, you can cancel at no cost. After purchase, some costs (product, China domestic shipping, customization) may already be non-refundable. That is why free QC photos come before shipping: you approve the real item first, or we don’t ship it. If something isn’t right, contact us and our order team will review the order and payment status first, check what costs have been incurred, and confirm the available options before any action."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I pay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We make it easy, and we always confirm the options for your order before you pay. For small orders and initial deposits, PayPal is usually available. For medium-sized orders, Wise is often our preferred option because transaction costs can be lower. For larger or B2B orders, we can provide business payment options such as XTransfer, LianLian, WorldFirst, Payoneer or bank transfer, depending on the order. Payment is only requested after you confirm your order — and the $1 activation is credited toward your first order."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there shipping restrictions on what I can buy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Shipping restrictions vary by product, destination and carrier. Certain categories such as dangerous goods, liquids, batteries, medicines, food, branded goods and other regulated products may have additional restrictions or may not be shippable. We’ll check shipping eligibility before arranging international delivery and let you know if additional requirements or restrictions apply."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Be honest — what are the real risks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We respect you enough to be upfront. (1) Most Chinese suppliers don’t accept returns. (2) Online photos can look better than the real item — and once it’s shipped, returning it is usually not realistic, so we help you judge the actual quality through real QC photos before anything leaves China. (3) International shipping takes time and your local customs may charge duties. (4) Disputes with a foreign seller are harder than local shopping. That is exactly why our process is built around free QC photos before shipping — and why insurance is available on every order."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does BuyTCN charge?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our standard purchasing service uses a progressive service-fee structure. Fees start at $20 for small orders and decrease progressively as merchandise value increases."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the service fee always 5%?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The fee is progressive. Large orders can qualify for a 5% rate on the portion above $20,000; lower tiers are charged at their own rates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are small orders more expensive?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Small orders require many of the same operational steps as larger ones, so a $20 minimum service fee applies to small orders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is international shipping included?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. International shipping is calculated separately based on destination, package characteristics and shipping method."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is package consolidation free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not necessarily. Eligible packages can be consolidated, but additional charges may apply depending on package characteristics, repacking and handling requirements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is storage free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Storage conditions depend on the order. We do not advertise a fixed free-storage period."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does QC guarantee product quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Standard QC is intended to identify visible issues and obvious discrepancies. It is not professional laboratory, technical or authenticity testing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I see my products before shipping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eligible orders may receive QC photos before international shipping, so you can review the visible condition of your order."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you source products directly from Chinese factories?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Depending on the product, order quantity and requirements, we can help search for suitable Chinese suppliers, wholesalers or manufacturers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a product link?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. If you’ve already found a product, send us the link. If you haven’t, you can send us a product photo, description or requirements and we’ll help search for suitable options in China."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is buying directly from a factory always cheaper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not necessarily. The best purchasing source depends on the product, quantity, specifications, seller, shipping and customization requirements. We help identify suitable purchasing options rather than assuming every product should come directly from a factory."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you help with wholesale orders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We can help with supplier sourcing, product purchasing, basic QC and international shipping coordination for eligible wholesale orders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you help find custom manufacturers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We can help search for potential Chinese manufacturers and coordinate sourcing inquiries. Custom manufacturing requirements, samples, production and factory services may require a separate quotation."
+        }
+      }
+    ]
+  }
+]

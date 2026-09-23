@@ -1,0 +1,14 @@
+{
+  "name": "faq",
+  "title": "Frequently Asked Questions | BuyTCN",
+  "description": "Answers to common questions about buying from Taobao, 1688 and other Chinese marketplaces: service fees, QC photos, shipping times, customs and payment methods.",
+  "canonical": "https://www.buytcn.com/faq/",
+  "mainChars": 28666,
+  "floatingChars": 3087,
+  "jsonLdCount": 3,
+  "hasDetails": true,
+  "hasInput": false,
+  "hasButton": false,
+  "headings": 1,
+  "tables": 0
+}

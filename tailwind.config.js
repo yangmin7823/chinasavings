@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  // src/content/*.html = 从旧站快照恢复的页面正文片段（以 ?raw 注入 React）。
+  // 必须加入 content 扫描范围，否则这些片段里的 Tailwind 类名会被 purge 掉。
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', './src/content/**/*.html'],
   theme: {
     extend: {
       colors: {
