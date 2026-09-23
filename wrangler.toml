@@ -3,7 +3,7 @@ compatibility_date = "2024-11-01"
 pages_build_output_dir = "dist"
 
 kv_namespaces = [
-  # BLOG: 文章与选题池存储 —— 部署前请把 id 换成你自己的 KV 命名空间 id
-  { binding = "BLOG", id = "REPLACE_WITH_BLOG_KV_ID" },
+  # BLOG: 文章与选题池存储
+  { binding = "BLOG", id = "c6700d61da6c4f648c559f11677d46aa" },
   { binding = "REVIEWS", id = "fb175b04805542d8ab163c2cc31bb433" }
 ]
