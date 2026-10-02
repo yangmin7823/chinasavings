@@ -16,7 +16,7 @@
   AGNES_API_KEY      必填。Agnes 平台创建
   AGNES_MODEL        可选。默认 agnes-3.0-flash；Actions 里的同名 secret 若为空则自动落回此默认
   AGNES_FALLBACK_MODEL 可选，默认 agnes-2.5-flash。主力模型超时/无响应时自动退回它。
-  DRY_RUN            true/false，默认 true（只存 DRAFT，不发布）
+  DRY_RUN            true/false，默认 false（质检通过后自动发布）
   NOTIFY_URL         可选 webhook
   SITE               默认 https://www.buytcn.com
 """
@@ -37,7 +37,7 @@ AGNES_MODEL = os.environ.get("AGNES_MODEL", "").strip() or "agnes-3.0-flash"
 # 模型链：主力 3.0-flash，超时/无响应时自动退到 2.5-flash（实测 3.0 偶发卡住，2.5 秒回）。
 AGNES_FALLBACK_MODEL = os.environ.get("AGNES_FALLBACK_MODEL", "").strip() or "agnes-2.5-flash"
 AGNES_MODEL_CHAIN = [AGNES_MODEL] + ([AGNES_FALLBACK_MODEL] if AGNES_FALLBACK_MODEL and AGNES_FALLBACK_MODEL != AGNES_MODEL else [])
-DRY_RUN = os.environ.get("DRY_RUN", "true").strip().lower() != "false"
+DRY_RUN = os.environ.get("DRY_RUN", "false").strip().lower() != "false"
 TOKEN = os.environ.get("BLOG_ADMIN_TOKEN", "").strip()
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
@@ -217,8 +217,10 @@ def main() -> int:
 
     # 2) Agnes 生成（一次返回完整 schema 字段）
     sys_p = (
-        "You are the editorial writer and SEO editor for BuyTCN, a China shopping/sourcing agent "
-        "for US buyers (Taobao/1688/PDD purchasing, QC photos, consolidation, worldwide shipping). "
+        "You are the editorial writer and SEO editor for BuyTCN, a foreign-trade B2B sourcing "
+        "service at www.buytcn.com and sourcing.buytcn.com for importers, wholesalers and businesses. "
+        "Cover supplier sourcing, bulk purchasing, samples, quality checks and export logistics. "
+        "Frame marketplace topics around business procurement. "
         "Write an original, practical, SEO-aware article. Do NOT rewrite any single source. "
         "Do not invent facts, statistics or customer stories. No unsupported savings/shipping/quality "
         "claims. Natural US English. Avoid AI-sounding openers."
