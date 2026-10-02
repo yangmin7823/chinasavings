@@ -189,6 +189,9 @@ export default function BlogPostPage({ slug }: { slug: string }) {
           </div>
 
           {/* 正文 —— 样式定义在 index.css 的 .blog-prose（不依赖 typography 插件） */}
+          {post.featured_image && (
+            <img src={post.featured_image} alt={post.title} className="mt-8 w-full aspect-[16/9] object-cover rounded-xl" />
+          )}
           <div
             className="blog-prose max-w-none mt-8"
             dangerouslySetInnerHTML={{ __html: post.content }}
@@ -205,12 +208,12 @@ export default function BlogPostPage({ slug }: { slug: string }) {
                     className="group border border-gray-200 rounded-xl p-4 open:bg-gray-50/60 transition-colors"
                   >
                     <summary className="flex items-start justify-between gap-3 cursor-pointer list-none">
-                      <span className="font-semibold text-gray-900 text-sm leading-snug">{f.q}</span>
+                      <span className="font-semibold text-gray-900 text-lg leading-snug">{f.q}</span>
                       <span className="text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0">
                         ▾
                       </span>
                     </summary>
-                    <p className="mt-3 text-sm text-gray-600 leading-relaxed">{f.a}</p>
+                    <p className="mt-3 text-lg text-gray-600 leading-relaxed">{f.a}</p>
                   </details>
                 ))}
               </div>
@@ -241,18 +244,21 @@ export default function BlogPostPage({ slug }: { slug: string }) {
           {/* CTA */}
           <div className="mt-12 rounded-2xl bg-gradient-to-br from-red-50 to-white border border-red-100 p-6 text-center">
             <h3 className="text-lg font-bold text-gray-900">
-              Need something bought and shipped from China?
+              Ready to source products from China?
             </h3>
-            <p className="mt-2 text-sm text-gray-600">
-              Send us a link from Taobao, 1688 or any Chinese marketplace — we purchase it,
-              inspect it with photos, consolidate and ship it to you.
+            <p className="mt-2 text-lg text-gray-600">
+              Visit our homepage to explore purchasing and quality checks, or send your requirements for a sourcing quote.
             </p>
             <a
               href="/#submit-link"
               className="inline-block mt-4 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-colors"
             >
-              Submit a product link →
+              Request a purchasing quote →
             </a>
+            <div className="mt-4 flex flex-wrap justify-center gap-5 text-base">
+              <a href="/" className="text-red-600 hover:underline">Explore BuyTCN services →</a>
+              <a href="https://sourcing.buytcn.com/" className="text-red-600 hover:underline">Start a sourcing request →</a>
+            </div>
           </div>
 
           <div className="mt-8">

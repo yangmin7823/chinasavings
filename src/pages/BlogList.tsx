@@ -284,11 +284,11 @@ export default function BlogList({ initialCategory = '' }: { initialCategory?: s
                       ) : null}
                     </div>
 
-                    <h2 className="text-lg font-bold text-gray-900 leading-snug group-hover:text-red-600 transition-colors">
+                    <h2 className="text-xl font-bold text-gray-900 leading-snug group-hover:text-red-600 transition-colors">
                       <a href={`/blog/${p.slug}`}>{p.title}</a>
                     </h2>
 
-                    <p className="mt-2.5 text-sm text-gray-600 leading-relaxed line-clamp-3 flex-1">
+                    <p className="mt-2.5 text-base text-gray-600 leading-relaxed line-clamp-3 flex-1">
                       {p.excerpt}
                     </p>
 
