@@ -36,6 +36,13 @@ function Site() {
         <Testimonials />
         <RiskDisclosure />
         <Pricing />
+        <section className="bg-gray-50 py-12 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">China Sourcing Guides</h2>
+            <p className="mt-3 text-lg text-gray-600">Explore practical advice on suppliers, bulk purchasing, quality checks and shipping before your next sourcing project.</p>
+            <a href="/blog/" className="inline-block mt-5 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg">Read the blog →</a>
+          </div>
+        </section>
         <FAQ />
         <Contact />
       </main>
