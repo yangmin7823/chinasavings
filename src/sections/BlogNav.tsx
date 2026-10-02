@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react'
  * 链接用绝对路径（从 /blog/ 回首页需带 /）
  */
 const NAV = [
+  { label: 'Home', href: '/' },
   { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'See How BuyTCN Works', href: '/#real-orders' },
-  { label: 'Guide', href: '/blog/', active: true },
+  { label: 'Blog', href: '/blog/', active: true },
   { label: 'For Business', href: '/business/' },
   { label: 'Pricing', href: '/pricing/' },
   { label: 'Payments', href: '/payment/' },

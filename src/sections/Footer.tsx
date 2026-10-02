@@ -7,6 +7,10 @@ export default function Footer() {
   const { unlocked, requestUnlock } = useUnlock()
 
   const scrollTo = (href: string) => {
+    if (!href.startsWith('#')) {
+      window.location.href = href
+      return
+    }
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
@@ -21,6 +25,7 @@ export default function Footer() {
     { label: t.nav.reviews, href: '#reviews' },
     { label: t.nav.pricing, href: '#pricing' },
     { label: t.nav.faq, href: '#faq' },
+    { label: 'Blog / Sourcing Guides', href: '/blog/' },
   ]
 
   const serviceList = t.services.items.map((s) => s.title)

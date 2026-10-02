@@ -7,6 +7,7 @@ const COLS = [
   {
     title: 'Shopping',
     links: [
+      { label: 'Home', href: '/' },
       { label: 'How It Works', href: '/#how-it-works' },
       { label: 'Pricing', href: '/pricing/' },
       { label: 'Real Orders', href: '/#real-orders' },

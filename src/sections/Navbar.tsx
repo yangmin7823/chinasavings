@@ -21,7 +21,7 @@ export default function Navbar() {
     { label: t.nav.pricing, href: '#pricing' },
     { label: t.nav.faq, href: '#faq' },
     // 站内路由（非锚点）：进入 /blog/ 的 China Sourcing Guide
-    { label: 'Guide', href: '/blog/', route: true },
+    { label: 'Blog', href: '/blog/', route: true },
   ]
 
   const scrollTo = (href: string) => {
