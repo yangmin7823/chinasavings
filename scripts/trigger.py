@@ -265,7 +265,12 @@ def main() -> int:
     gen_links = gen.get("internal_links") or []
     internal_links = []
     for x in (gen_links if isinstance(gen_links, list) else [])[:2]:
-        s = str((x or {}).get("slug", ""))
+        if isinstance(x, dict):
+            s = str(x.get("slug") or "")
+        elif isinstance(x, str):
+            s = x
+        else:
+            continue
         if s.startswith("/blog/"):
             s = s[len("/blog/"):]
         s = s.split("?")[0].strip("/")
