@@ -8,7 +8,7 @@ import trigger
 
 
 class AutoPublishTests(unittest.TestCase):
-    def run_article(self, links, content=None):
+    def run_article(self, links, content=None, invalid_first_response=False):
         generated = {
             'title': 'Factory sourcing checklist', 'slug': 'factory-sourcing-checklist',
             'content': content or '<p>' + 'supplier verification quality samples ' * 170 + '</p>',
@@ -25,9 +25,10 @@ class AutoPublishTests(unittest.TestCase):
             calls.append(payload)
             return {'ok': True, 'post': {'id': 'test-post'}}
 
+        replies = (['{invalid json'] if invalid_first_response else []) + [json.dumps(generated)]
         with patch.object(trigger, 'TOKEN', 'test-only'), patch.object(trigger, 'DRY_RUN', False), \
              patch.object(trigger, 'api', side_effect=api), \
-             patch.object(trigger, 'agnes_chat', return_value=json.dumps(generated)), \
+             patch.object(trigger, 'agnes_chat', side_effect=replies), \
              contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
             result = trigger.main()
         return result, calls
@@ -44,6 +45,11 @@ class AutoPublishTests(unittest.TestCase):
         result, calls = self.run_article([], '<p>Too short.</p>')
         self.assertEqual(result, 1)
         self.assertEqual(calls, [])
+
+    def test_invalid_json_regenerates_before_publishing(self):
+        result, calls = self.run_article([], invalid_first_response=True)
+        self.assertEqual(result, 0)
+        self.assertEqual([call['action'] for call in calls], ['save', 'publish'])
 
 
 if __name__ == '__main__':

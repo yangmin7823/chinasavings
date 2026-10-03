@@ -239,13 +239,19 @@ def main() -> int:
         '"faq":[{"q":"question","a":"answer"}](2-3 items),'
         '"internal_links":[{"slug":"existing-slug"}](1-2 from candidates above, omit if none fit)}'
     )
-    raw = agnes_chat(sys_p, user_p)
-    try:
-        gen = json.loads(raw.replace("```json", "").replace("```", "").strip())
-    except Exception:
-        print("Agnes 返回非 JSON：", raw[:300], file=sys.stderr)
-        notify("❌ BuyTCN Blog 生成失败：非 JSON 响应")
-        return 1
+    for attempt in range(2):
+        raw = agnes_chat(sys_p, user_p)
+        try:
+            gen = json.loads(raw.replace("```json", "").replace("```", "").strip())
+            if not isinstance(gen, dict):
+                raise ValueError("Expected a JSON object")
+            break
+        except (json.JSONDecodeError, ValueError) as exc:
+            print(f"Agnes JSON 校验失败（第 {attempt + 1} 次）: {exc}", file=sys.stderr)
+            if attempt == 1:
+                notify("❌ BuyTCN Blog 生成失败：非 JSON 响应")
+                return 1
+            user_p += "\nYour previous response was not valid JSON. Regenerate the complete article as one valid JSON object. Escape quotes and newlines inside string values. Do not include markdown fences or extra text."
 
     content = str(gen.get("content") or "")
     title = str(gen.get("title") or topic.get("topic"))[:110]
