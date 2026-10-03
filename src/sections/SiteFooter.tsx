@@ -71,10 +71,10 @@ export default function SiteFooter({ active = '' }: { active?: string }) {
                 💬 WhatsApp: +86 153 8759 2595
               </a>
               <a
-                href="mailto:service@buytcn.com?subject=&body="
+                href="mailto:services@buytcn.com?subject=&body="
                 className="block hover:text-white transition-colors"
               >
-                📧 service@buytcn.com
+                📧 services@buytcn.com
               </a>
             </div>
           </div>
